@@ -28,7 +28,6 @@ public class Main extends Application {
 		primaryStage.setTitle("veterinary");
 		primaryStage.show();
 		
-		veterinaryGUI.showMedicalHistoryMenu(null);
 	}
 
 }
