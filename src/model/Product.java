@@ -7,6 +7,8 @@ public abstract class Product {
 	private int stockUnits;
 	private int soldUnits;
 	private int cost;
+	private Product next;
+	private Product prev;
 	
 	public Product(String name, int price, int refNum, int stockUnits, int soldUnits, int cost) {
 		this.name = name;
