@@ -17,6 +17,8 @@ public abstract class Product {
 		this.stockUnits = stockUnits;
 		this.soldUnits = soldUnits;
 		this.cost = cost;
+		this.next=null;
+		this.prev=null;
 	}
 	public String getName() {
 		return name;
@@ -54,6 +56,19 @@ public abstract class Product {
 	public void setCost(int cost) {
 		this.cost = cost;
 	}
+	public Product getNext() {
+		return next;
+	}
+	public void setNext(Product next) {
+		this.next = next;
+	}
+	public Product getPrev() {
+		return prev;
+	}
+	public void setPrev(Product prev) {
+		this.prev = prev;
+	}
+	
 	
 	
 }
