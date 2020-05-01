@@ -26,7 +26,7 @@ public class VeterinaryGUI {
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("VeterinaryMenu.fxml"));
     	fxmlLoader.setController(this);
     	
-    	Parent medicalHistoryPane = fxmlLoader.load();
+    	BorderPane medicalHistoryPane = fxmlLoader.load();
     	mainPane.getChildren().clear();
     	mainPane.setCenter(medicalHistoryPane);
     }

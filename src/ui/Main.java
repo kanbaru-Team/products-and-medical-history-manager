@@ -23,9 +23,10 @@ public class Main extends Application {
 		fxmlLoader.setController(veterinaryGUI);
 		
 		Parent root = fxmlLoader.load();
-		Scene scene = new Scene(root);
+		Scene scene = new Scene(root,900,500);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("veterinary");
+		primaryStage.setResizable(false);
 		primaryStage.show();
 		
 	}
