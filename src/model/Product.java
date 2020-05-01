@@ -68,7 +68,5 @@ public abstract class Product {
 	public void setPrev(Product prev) {
 		this.prev = prev;
 	}
-	
-	
-	
+
 }
