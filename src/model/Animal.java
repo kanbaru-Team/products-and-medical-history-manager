@@ -9,6 +9,8 @@ public abstract class Animal {
 	private String status;
 	private String medicalHistory;
 	private Owner owner;
+	private Animal next;
+	private Animal prev;
 	
 	public Animal(int i, String r, int a, String d, String s, String m, String mh,Owner o) {
 		id = i;
@@ -18,6 +20,24 @@ public abstract class Animal {
 		status = s;
 		medicalHistory = mh;
 		owner = o;
+		prev = null;
+		next = null;
+	}
+
+	public Animal getNext() {
+		return next;
+	}
+
+	public void setNext(Animal next) {
+		this.next = next;
+	}
+
+	public Animal getPrev() {
+		return prev;
+	}
+
+	public void setPrev(Animal prev) {
+		this.prev = prev;
 	}
 
 	public int getId() {

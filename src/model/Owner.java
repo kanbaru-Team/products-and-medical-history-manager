@@ -6,12 +6,18 @@ public class Owner{
 	private String name;
 	private String address;
 	private String phoneNumber;
+	private Owner parent;
+	private Owner left;
+	private Owner right;
 
 	public Owner(int i, String n,String a,String pn ){
 		id = i;
 		name = n;
 		address = a;
 		phoneNumber = pn;
+		parent = null;
+		left = null;
+		right = null;
 	}
 
 	public int getId() {
@@ -44,5 +50,29 @@ public class Owner{
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+	
+	public Owner getParent() {
+		return parent;
+	}
+
+	public void setParent(Owner parent) {
+		this.parent = parent;
+	}
+
+	public Owner getLeft() {
+		return left;
+	}
+
+	public void setLeft(Owner left) {
+		this.left = left;
+	}
+
+	public Owner getRight() {
+		return right;
+	}
+
+	public void setRight(Owner right) {
+		this.right = right;
 	}
 }
