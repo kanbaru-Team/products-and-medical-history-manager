@@ -19,6 +19,9 @@ public class Veterinary {
 		products = new ArrayList<Product>();
 		animals = new ArrayList<Animal>();
 	}
+	public Product getFirstProduct() {
+		return firstProd;
+	}
 	
 	public void addProduct(String name, int price, int refNum, int stockUnits, int soldUnits, int cost,String color) {
 		Accesory a = new Accesory(name,price,refNum,stockUnits,soldUnits,cost,color);
