@@ -47,6 +47,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
+            <Button mnemonicParsing="false" text="generar Repotte" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </center>

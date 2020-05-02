@@ -10,7 +10,7 @@ import model.Veterinary;
 public class Main extends Application {
 
 	Veterinary veterinary = new Veterinary();
-	VeterinaryGUI veterinaryGUI = new VeterinaryGUI(veterinary);
+	MainMenuGUI veterinaryGUI = new MainMenuGUI(veterinary);
 	
 	public static void main(String[] args) {
 		launch();

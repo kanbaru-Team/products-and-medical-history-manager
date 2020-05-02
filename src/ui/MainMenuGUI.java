@@ -9,14 +9,14 @@ import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
 import model.Veterinary;
 
-public class VeterinaryGUI {
+public class MainMenuGUI {
 
     @FXML
     private BorderPane mainPane;//panel principal
     
     Veterinary veterinary;
     
-    public VeterinaryGUI(Veterinary v) {
+    public MainMenuGUI(Veterinary v) {
 		veterinary = v;
 	}
     
