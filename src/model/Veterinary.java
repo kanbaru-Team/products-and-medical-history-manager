@@ -1,6 +1,8 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Veterinary {
 	private Product firstProd;
@@ -82,7 +84,7 @@ public class Veterinary {
 		
 	}
 	
-	public ArrayList<Product> showProducts(){
+	public ArrayList<Product> showAllProducts(){
 		ArrayList <Product> prods = new ArrayList<Product>();
 		if(firstProd==null) {
 			
@@ -102,6 +104,121 @@ public class Veterinary {
 			}
 		}
 		return prods;
+		
+	}
+	////
+	public Product getFirstProduct() {
+		return firstProd;
+	}
+	
+	public void addPatient(int i, String r, int a, String d, String s, String m, String mh, Owner o, String other, int patientType) {
+		
+	}
+	
+	public void addOwner(int i, String n,String a,String pn ){
+		
+	}
+	
+	public void CreateMedicalRecord(String generalInf, String detailedInf) {
+		//falta hacer la clase de medical record
+	}
+	
+	public void updateMedicalRecord(String generalInf, String detailedInf) {
+		//falta crear la clase de medical record
+	}
+	
+	public void ChangePatientStatus(String status) {
+		
+	}
+	
+	public void updateMedicalHistory(String newHistory) {
+		
+	}
+	
+	public Animal lookForPatient(int id) {
+		Animal patient = null;//para que no tire errores por el momento, esta linea se cambiará
+		
+		return patient;
+	}
+	
+	public List<Animal> showAllHospitalizedPatients(){
+		LinkedList<Animal> patients = null;
+		
+		return patients;
+	}
+	
+	public List<Animal> showAllPatientByID(){
+		LinkedList<Animal> patients = null;
+		
+		return patients;
+	}
+	
+	public List<Animal> showAllPatientByAge(){
+		LinkedList<Animal> patients = null;
+		
+		return patients;
+	}
+	
+	public List<Animal> showAllPatientBySpecies(){
+		LinkedList<Animal> patients = null;
+		
+		return patients;
+	}
+	
+	public Product lookForProduct(int refNum) {
+		Product p=null;
+		
+		return p;
+	}
+	
+	public List<Product> showCertainTypeOfProduct(int type){
+		LinkedList<Product> products = null;
+		
+		return products;
+	}
+	
+	public List<Product> showAllProductsByPrice(){
+		LinkedList<Product> products = null;
+		
+		return products;
+	}
+	
+	public List<Product> showAllProductsByRefNum(){
+		LinkedList<Product> products = null;
+		
+		return products;
+	}
+	
+	public List<Product> showAllProductsByType(){
+		LinkedList<Product> products = null;
+		
+		return products;
+	}
+	
+	public List<Product> showProductsByProfits(){
+		LinkedList<Product> products = null;
+		
+		return products;
+		
+	}
+	
+	public void deleteProduct(int refNum) {
+		
+	}
+	
+	public void deletePatient(int id) {
+		
+	}
+	
+	public void printMedicalHistory(int id) {
+		
+	}
+	
+	public void sendProduct(int refNum) {
+		
+	}
+	
+	public void increaseStock(int refNum, int units) {
 		
 	}
 	
