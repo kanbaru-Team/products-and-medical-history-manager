@@ -41,7 +41,7 @@ public class MainMenuGUI {
 
     @FXML
     public void showStoreMenu(ActionEvent event) throws IOException {
-    	System.out.println("fdsds");
+    	
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxmlFiles/StoreMenu.fxml"));
     	fxmlLoader.setController(storeMenu);
     	

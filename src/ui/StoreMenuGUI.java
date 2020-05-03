@@ -46,7 +46,7 @@ public class StoreMenuGUI {
 		if(registeredProducts==null) {
 			registeredProducts = new RegisteredProductsGUI(v,this,mm);
 		}
-		
+		////
 	}
 
     @FXML
@@ -97,6 +97,7 @@ public class StoreMenuGUI {
 
     @FXML
     public void searchProduct(ActionEvent event) throws IOException {
+    	System.out.println("sdfsdfsdfsf");
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxmlFiles/LookForProduct.fxml"));
     	fxmlLoader.setController(searchProduct);
     	
