@@ -75,7 +75,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <ChoiceBox value="waifus" fx:id="addProducts" layoutX="314.0" layoutY="31.0" prefHeight="41.0" prefWidth="210.0" />
+            <ChoiceBox fx:id="addProducts" layoutX="314.0" layoutY="31.0" prefHeight="41.0" prefWidth="210.0" value="waifus" />
             <Button layoutX="136.0" layoutY="26.0" mnemonicParsing="false" onAction="#addProduct" prefHeight="51.0" prefWidth="131.0" text="Add product">
                <font>
                   <Font name="Franklin Gothic Medium" size="18.0" />

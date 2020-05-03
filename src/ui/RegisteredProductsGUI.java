@@ -19,13 +19,13 @@ import model.Veterinary;
 public class RegisteredProductsGUI	{
 	
 	private Veterinary vet;
-	private StoreMenuGUI storemenu;
-	private MainMenuGUI mainmenu;
+	private StoreMenuGUI storeMenu;
+	private MainMenuGUI mainMenu;
 	
     public RegisteredProductsGUI(Veterinary vet, StoreMenuGUI storemenu, MainMenuGUI mainmenu) {
 		this.vet = vet;
-		this.storemenu = storemenu;
-		this.mainmenu = mainmenu;
+		this.storeMenu = storemenu;
+		this.mainMenu = mainmenu;
 	}
 
 	@FXML
@@ -55,11 +55,12 @@ public class RegisteredProductsGUI	{
     @FXML
     public void goBack(ActionEvent event) throws IOException {
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxmlFiles/StoreMenu.fxml"));
-    	fxmlLoader.setController(storemenu);
+    	fxmlLoader.setController(storeMenu);
     	
     	Parent StoreMenuPane = fxmlLoader.load();
-    	mainmenu.getMainPane().getChildren().clear();
-    	mainmenu.getMainPane().setCenter(StoreMenuPane);
+    	mainMenu.getMainPane().getChildren().clear();
+    	mainMenu.getMainPane().setCenter(StoreMenuPane);
+    	storeMenu.initializeComboBox();
     }
     
  public void initializeTableView() {

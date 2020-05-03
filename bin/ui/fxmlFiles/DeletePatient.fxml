@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.241" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <Label alignment="CENTER" prefHeight="44.0" prefWidth="291.0" text="Eliminar Paciente" BorderPane.alignment="CENTER">
          <font>
@@ -28,7 +28,7 @@
       </Label>
    </top>
    <bottom>
-      <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" text="Volver" BorderPane.alignment="CENTER_LEFT">
+      <Button mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="91.0" text="Volver" BorderPane.alignment="CENTER_LEFT">
          <BorderPane.margin>
             <Insets bottom="6.0" left="30.0" />
          </BorderPane.margin>
@@ -59,12 +59,12 @@
                   <Insets right="15.0" />
                </GridPane.margin>
             </Label>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="92.0" text="eliminar" GridPane.columnIndex="2">
+            <Button mnemonicParsing="false" onAction="#deletePatient" prefHeight="25.0" prefWidth="92.0" text="eliminar" GridPane.columnIndex="2">
                <GridPane.margin>
                   <Insets left="15.0" />
                </GridPane.margin>
             </Button>
-            <TextField GridPane.columnIndex="1" />
+            <TextField fx:id="patiendID" GridPane.columnIndex="1" />
             <Label prefHeight="68.0" prefWidth="248.0" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
          </children>
       </GridPane>

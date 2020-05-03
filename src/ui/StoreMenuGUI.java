@@ -69,6 +69,7 @@ public class StoreMenuGUI {
         	Parent addProductPane2 = fxmlLoader2.load();
         	menumain.getMainPane().getChildren().clear();
         	menumain.getMainPane().setCenter(addProductPane2);
+        	addToy.initializeChoiceBox();
         	break;
     	case "Add a new food product":
     		FXMLLoader fxmlLoader3 = new FXMLLoader(getClass().getResource("fxmlFiles/AddNewFoodProduct.fxml"));
@@ -77,6 +78,7 @@ public class StoreMenuGUI {
         	Parent addProductPane3 = fxmlLoader3.load();
         	menumain.getMainPane().getChildren().clear();
         	menumain.getMainPane().setCenter(addProductPane3);
+        	addFood.initializeChoiceBox();
         	break;
         default:
         	break;

@@ -6,22 +6,21 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import model.Veterinary;
 
 public class AddNewToyProductGUI {
 	private Veterinary vet;
-	private StoreMenuGUI sm;
-	private MainMenuGUI mainmenu;
+	private StoreMenuGUI storeMenu;
+	private MainMenuGUI mainMenu;
 	
     public AddNewToyProductGUI(Veterinary vet, StoreMenuGUI sm, MainMenuGUI mainmenu) {
 		this.vet = vet;
-		this.sm = sm;
-		this.mainmenu = mainmenu;
+		this.storeMenu = sm;
+		this.mainMenu = mainmenu;
 	}
-
-	@FXML
-    private TextField newProductSize;
 
     @FXML
     private TextField newProductPrice;
@@ -42,18 +41,61 @@ public class AddNewToyProductGUI {
     private TextField newProductQuantity;
 
     @FXML
-    void createNewToyProduct(ActionEvent event) {
+    private ChoiceBox<String> newProductSize;
 
+    @FXML
+    public void createNewToyProduct(ActionEvent event) {
+
+    	if(!newProductName.getText().isEmpty() && !newProductColor.getText().isEmpty() && newProductSize.getValue()!="none" && !newProductQuantity.getText().isEmpty()  && !newProductID.getText().isEmpty()  &&  !newProductPrice.getText().isEmpty() && !newProductCost.getText().isEmpty()) {
+    		try {
+	    		String name = newProductName.getText();
+	        	String color = newProductColor.getText();
+	        	String size = newProductSize.getValue();
+	        	int stockUnits = Integer.parseInt(newProductQuantity.getText());
+	        	int refNumber = Integer.parseInt(newProductID.getText());
+	        	int price = Integer.parseInt(newProductPrice.getText());
+	        	int cost = Integer.parseInt(newProductCost.getText());
+	    		
+	        	vet.addProduct(name,  price,  refNumber,  stockUnits,  0,  cost, color, size);
+	        	
+        	    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        	    alert.setHeaderText(null);
+        	    alert.setTitle("Alert");
+        	    alert.setContentText("el producto fue agregado con exito");
+        	    alert.showAndWait();
+	        	
+    		} catch(NumberFormatException e) {
+        	    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        	    alert.setHeaderText(null);
+        	    alert.setTitle("Alert");
+        	    alert.setContentText("en cantidad, precio, numero de referencia \n y costo se debe ingresar un valor numerico");
+        	    alert.showAndWait();
+    		}
+    	}else {
+    		 Alert alert = new Alert(Alert.AlertType.INFORMATION);
+     	    alert.setHeaderText(null);
+     	    alert.setTitle("Alert");
+     	    alert.setContentText("algunos campos estan vacios, se deben llenar todos");
+     	    alert.showAndWait();
+    	}
+    	
+    	
     }
 
     @FXML
-    void showMedicalHistoryMenu(ActionEvent event) throws IOException {
+    public void showMedicalHistoryMenu(ActionEvent event) throws IOException {
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxmlFiles/StoreMenu.fxml"));
-    	fxmlLoader.setController(sm);
+    	fxmlLoader.setController(storeMenu);
     	
     	Parent StoreMenuPane = fxmlLoader.load();
-    	mainmenu.getMainPane().getChildren().clear();
-    	mainmenu.getMainPane().setCenter(StoreMenuPane);
+    	mainMenu.getMainPane().getChildren().clear();
+    	mainMenu.getMainPane().setCenter(StoreMenuPane);
+    	storeMenu.initializeComboBox();
+    }
+    
+    public void initializeChoiceBox() {
+    	newProductSize.getItems().addAll("pequeño","mediano","grande");
+    	
     }
 
 }

@@ -12,13 +12,13 @@ import model.Veterinary;
 public class DeleteProductGUI {
 	
 	private  Veterinary veterinary;
-	private StoreMenuGUI storemenu;
-	private MainMenuGUI mainmenu;
+	private StoreMenuGUI storeMenu;
+	private MainMenuGUI mainMenu;
 	
 	public DeleteProductGUI(Veterinary v,StoreMenuGUI sm,MainMenuGUI mm) {
 		veterinary = v;
-		storemenu=sm;
-		mainmenu=mm;
+		storeMenu=sm;
+		mainMenu=mm;
 	}
 	
     @FXML
@@ -32,11 +32,12 @@ public class DeleteProductGUI {
     @FXML
     void goBack(ActionEvent event) throws IOException {
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxmlFiles/StoreMenu.fxml"));
-    	fxmlLoader.setController(storemenu);
+    	fxmlLoader.setController(storeMenu);
     	
     	Parent StoreMenuPane = fxmlLoader.load();
-    	mainmenu.getMainPane().getChildren().clear();
-    	mainmenu.getMainPane().setCenter(StoreMenuPane);
+    	mainMenu.getMainPane().getChildren().clear();
+    	mainMenu.getMainPane().setCenter(StoreMenuPane);
+    	storeMenu.initializeComboBox();
     }
 
 }
