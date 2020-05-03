@@ -70,7 +70,7 @@
                </GridPane.margin>
             </TextField>
             <TextField fx:id="newProductName" layoutX="114.0" layoutY="157.0" GridPane.columnIndex="1" />
-            <ChoiceBox fx:id="newProductSpecies" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ChoiceBox value="none" fx:id="newProductSpecies" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label layoutX="55.0" layoutY="267.0" text="Costo:" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets right="10.0" />
