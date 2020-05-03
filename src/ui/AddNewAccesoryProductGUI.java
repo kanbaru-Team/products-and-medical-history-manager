@@ -51,7 +51,7 @@ public class AddNewAccesoryProductGUI {
 	        	int cost = Integer.parseInt(newProductCost.getText());
 	    		
 	        	vet.addProduct(name,  price,  refNumber,  stockUnits,  0,cost,  "Accessory", color);
-	        	
+	     
         	    Alert alert = new Alert(Alert.AlertType.INFORMATION);
         	    alert.setHeaderText(null);
         	    alert.setTitle("Alert");
