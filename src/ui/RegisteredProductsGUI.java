@@ -67,7 +67,7 @@ public class RegisteredProductsGUI	{
 	 	ObservableList obs = FXCollections.observableArrayList(vet.showAllProducts());
 	 	productsList.setItems(obs);
 	 	nameTc.setCellValueFactory(new PropertyValueFactory<Product,String>("name"));
-	 	refTc.setCellValueFactory(new PropertyValueFactory<Product,String>("refnum"));
+	 	refTc.setCellValueFactory(new PropertyValueFactory<Product,String>("refNum"));
 	 	priceTc.setCellValueFactory(new PropertyValueFactory<Product,String>("price"));
 	 	typeTc.setCellValueFactory(new PropertyValueFactory<Product,String>("type"));
 	 	soldUnitsTc.setCellValueFactory(new PropertyValueFactory<Product,String>("soldunits"));

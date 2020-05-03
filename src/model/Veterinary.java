@@ -25,8 +25,8 @@ public class Veterinary {
 		return firstProd;
 	}
 	
-	public void addProduct(String name, int price, int refNum, int stockUnits, int soldUnits, int cost,String color) {
-		Accesory a = new Accesory(name,price,refNum,stockUnits,soldUnits,cost,color);
+	public void addProduct(String name, int price, int refNum, int stockUnits, int soldUnits, int cost,String type,String color) {
+		Accesory a = new Accesory(name,price,refNum,stockUnits,soldUnits,cost,type,color);
 		if(firstProd==null) {
 			firstProd=a;
 			lastProd=a;
@@ -46,8 +46,8 @@ public class Veterinary {
 		
 	}
 	
-	public void addProduct(String name, int price, int refNum, int stockUnits, int soldUnits, int cost,String color,String size) {
-		Toy a = new Toy(name,price,refNum,stockUnits,soldUnits,cost,color,size);
+	public void addProduct(String name, int price, int refNum, int stockUnits, int soldUnits, int cost,String type,String color,String size) {
+		Toy a = new Toy(name,price,refNum,stockUnits,soldUnits,cost,type,color,size);
 		if(firstProd==null) {
 			firstProd=a;
 			lastProd=a;
@@ -66,8 +66,8 @@ public class Veterinary {
 		}
 		
 	}
-	public void addProduct(String name, int price, int refNum, int stockUnits, int soldUnits, int cost,String specie,double weight) {
-		Food a = new Food(name,price,refNum,stockUnits,soldUnits,cost,specie,weight);
+	public void addProduct(String name, int price, int refNum, int stockUnits, int soldUnits, int cost,String type,String specie,double weight) {
+		Food a = new Food(name,price,refNum,stockUnits,soldUnits,cost,type,specie,weight);
 		if(firstProd==null) {
 			firstProd=a;
 			lastProd=a;

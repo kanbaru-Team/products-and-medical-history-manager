@@ -56,26 +56,26 @@ public class AddNewToyProductGUI {
 	        	int price = Integer.parseInt(newProductPrice.getText());
 	        	int cost = Integer.parseInt(newProductCost.getText());
 	    		
-	        	vet.addProduct(name,  price,  refNumber,  stockUnits,  0,  cost, color, size);
+	        	vet.addProduct(name,  price,  refNumber,  stockUnits,  0,  cost,"Toy", color, size);
 	        	
         	    Alert alert = new Alert(Alert.AlertType.INFORMATION);
         	    alert.setHeaderText(null);
-        	    alert.setTitle("Alert");
-        	    alert.setContentText("el producto fue agregado con exito");
+        	    alert.setTitle("Success");
+        	    alert.setContentText("The product was added sucessfully!");
         	    alert.showAndWait();
 	        	
     		} catch(NumberFormatException e) {
         	    Alert alert = new Alert(Alert.AlertType.INFORMATION);
         	    alert.setHeaderText(null);
         	    alert.setTitle("Alert");
-        	    alert.setContentText("en cantidad, precio, numero de referencia \n y costo se debe ingresar un valor numerico");
+        	    alert.setContentText("Error: Remember that fields like price, reference number and quantity must be numbers");
         	    alert.showAndWait();
     		}
     	}else {
     		 Alert alert = new Alert(Alert.AlertType.INFORMATION);
      	    alert.setHeaderText(null);
      	    alert.setTitle("Alert");
-     	    alert.setContentText("algunos campos estan vacios, se deben llenar todos");
+     	    alert.setContentText("Some fields are empty, please fill all the fields");
      	    alert.showAndWait();
     	}
     	

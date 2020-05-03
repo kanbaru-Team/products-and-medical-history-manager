@@ -8,19 +8,21 @@ public abstract class Product {
 	private int soldUnits;
 	private int cost;
 	private int profits;
+	private String type;
 	private Product next;
 	private Product prev;
 	
-	public Product(String name, int price, int refNum, int stockUnits, int soldUnits, int cost) {
+	public Product(String name, int price, int refNum, int stockUnits, int soldUnits, int cost,String type) {
 		this.name = name;
 		this.price = price;
 		this.refNum = refNum;
 		this.stockUnits = stockUnits;
-		this.soldUnits = soldUnits;
+		this.soldUnits = 0;
 		this.cost = cost;
 		this.profits=0;
 		this.next=null;
 		this.prev=null;
+		this.type=type;
 	}
 	public String getName() {
 		return name;
@@ -60,6 +62,13 @@ public abstract class Product {
 	}
 	public String getProfits() {
 		return String.valueOf(price*soldUnits);
+	}
+	
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 	public Product getNext() {
 		return next;
