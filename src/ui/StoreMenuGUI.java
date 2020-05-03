@@ -35,7 +35,7 @@ public class StoreMenuGUI {
 			addToy = new AddNewToyProductGUI(v,this,mm);
 		}
 		if(addAccesory==null) {
-			//addAccesory = new AddNewAccesoryProductGUI(v,this,mm);
+			addAccesory = new AddNewAccesoryProductGUI(v,this,mm);
 		}
 		if(addFood==null) {
 			addFood = new AddNewFoodProductGUI(v,this,mm);
