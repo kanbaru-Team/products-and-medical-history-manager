@@ -5,7 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.ChoiceBox;
 import model.Veterinary;
 
 public class StoreMenuGUI {
@@ -18,6 +18,9 @@ public class StoreMenuGUI {
 	private AddNewToyProductGUI addToy;
 	private LookForProductGUI searchProduct;
 	private RegisteredProductsGUI registeredProducts;
+	
+    @FXML
+    private ChoiceBox<String> addProducts;
 
 	public StoreMenuGUI(Veterinary v,MainMenuGUI mm) {
 		veterinary=v;
@@ -42,15 +45,6 @@ public class StoreMenuGUI {
 		}
 		
 	}
-	
-	ObservableList <String> list=  FXCollections.observableArrayList("Add an accessory","Add a toy","Add food");
-	public void initialize() {
-		if(comboAddProduct!=null) {
-			comboAddProduct.setItems(list);
-		}
-	}
-    @FXML
-    private ComboBox<String> comboAddProduct;
 
     @FXML
     void addProduct(ActionEvent event) {
@@ -77,5 +71,10 @@ public class StoreMenuGUI {
     void showProductsByType(ActionEvent event) {
 
     }
+    
+	public void initializeComboBox() {
+		addProducts.getItems().addAll("a","b","c");
+		
+	}
 
 }

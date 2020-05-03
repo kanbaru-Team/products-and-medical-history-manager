@@ -48,6 +48,7 @@ public class MainMenuGUI {
     	Parent storeMenuPane = fxmlLoader.load();
     	mainPane.getChildren().clear();
     	mainPane.setCenter(storeMenuPane);
+    	storeMenu.initializeComboBox();
     } 
 	
     public BorderPane getMainPane() {
