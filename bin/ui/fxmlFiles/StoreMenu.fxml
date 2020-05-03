@@ -27,7 +27,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="314.0" layoutY="113.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="246.0" text="Show all the products">
+            <Button layoutX="314.0" layoutY="113.0" mnemonicParsing="false" onAction="#showAllProducts" prefHeight="51.0" prefWidth="246.0" text="Show all the products">
                <font>
                   <Font name="Franklin Gothic Medium" size="18.0" />
                </font>
@@ -39,7 +39,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="57.0" layoutY="219.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="210.0" text="Delete a product">
+            <Button layoutX="57.0" layoutY="219.0" mnemonicParsing="false" onAction="#deleteProduct" prefHeight="52.0" prefWidth="210.0" text="Delete a product">
                <font>
                   <Font name="Franklin Gothic Medium" size="18.0" />
                </font>
@@ -51,7 +51,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="57.0" layoutY="113.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="209.0" text="Search a product">
+            <Button layoutX="57.0" layoutY="113.0" mnemonicParsing="false" onAction="#searchProduct" prefHeight="51.0" prefWidth="209.0" text="Search a product">
                <font>
                   <Font name="Franklin Gothic Medium" size="18.0" />
                </font>
@@ -63,7 +63,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="317.0" layoutY="219.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="244.0" text="Show products by type">
+            <Button layoutX="317.0" layoutY="219.0" mnemonicParsing="false" onAction="#showProductsByType" prefHeight="51.0" prefWidth="244.0" text="Show products by type">
                <font>
                   <Font name="Franklin Gothic Medium" size="18.0" />
                </font>
@@ -75,7 +75,13 @@
                   </ImageView>
                </graphic>
             </Button>
-            <ChoiceBox fx:id="addProducts" layoutX="195.0" layoutY="31.0" prefHeight="41.0" prefWidth="210.0" />
+            <ChoiceBox value="waifus" fx:id="addProducts" layoutX="314.0" layoutY="31.0" prefHeight="41.0" prefWidth="210.0" />
+            <Button layoutX="136.0" layoutY="26.0" mnemonicParsing="false" onAction="#addProduct" prefHeight="51.0" prefWidth="131.0" text="Add product">
+               <font>
+                  <Font name="Franklin Gothic Medium" size="18.0" />
+               </font>
+            </Button>
+            <Label layoutX="372.0" layoutY="69.0" text="select type to add" />
          </children>
       </AnchorPane>
    </center>
