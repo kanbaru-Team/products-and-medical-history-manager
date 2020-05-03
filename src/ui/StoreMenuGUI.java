@@ -1,5 +1,7 @@
 package ui;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -41,12 +43,18 @@ public class StoreMenuGUI {
 		
 	}
 	
-	
+	ObservableList <String> list=  FXCollections.observableArrayList("Add an accessory","Add a toy","Add food");
+	public void initialize() {
+		if(comboAddProduct!=null) {
+			comboAddProduct.setItems(list);
+		}
+	}
     @FXML
-    private ComboBox<?> comboAddProduct;
+    private ComboBox<String> comboAddProduct;
 
     @FXML
     void addProduct(ActionEvent event) {
+    	
     	FXMLLoader fxml = new FXMLLoader(getClass().getResource("fxmlFiles/"));
     }
 
