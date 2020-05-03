@@ -1,13 +1,23 @@
 package ui;
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import model.Animal;
+import model.Veterinary;
 
 public class RegisteredPatientsGUI {
+	
+	private MainMenuGUI mainMenu;
+	private VeterinaryMenuGUI veterinaryMenu;
+	private Veterinary veterinary;
 	
     @FXML
     private ComboBox<?> comboOrder;
@@ -16,27 +26,54 @@ public class RegisteredPatientsGUI {
     private Label title;
 
     @FXML
-    private TableView<?> table;
+    private TableView<Animal> table;
 
     @FXML
-    private TableColumn<?, ?> columnName;
+    private TableColumn<Animal, String> columnName;
 
     @FXML
-    private TableColumn<?, ?> columnID;
+    private TableColumn<Animal, String> columnID;
 
     @FXML
-    private TableColumn<?, ?> columnAge;
+    private TableColumn<Animal, String> columnAge;
 
     @FXML
-    private TableColumn<?, ?> columnSpecie;
+    private TableColumn<Animal, String> columnSpecie;
 
     @FXML
-    private TableColumn<?, ?> columnStatus;
+    private TableColumn<Animal, String> columnStatus;
 
+    public RegisteredPatientsGUI(MainMenuGUI mm, VeterinaryMenuGUI vm,Veterinary v) {
+    	mainMenu = mm;
+    	veterinaryMenu = vm;
+    	veterinary = v;
+    	
+    }
+    
+    public void initializeTableView() {
+    	
+    }
+    
     @FXML
-    void returnToPrevScreen(ActionEvent event) {
-
+    public void returnToPrevScreen(ActionEvent event) throws IOException {
+		
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxmlFiles/VeterinaryMenu.fxml"));
+    	fxmlLoader.setController(veterinaryMenu);
+    	
+    	Parent VeterinaryMenuPane = fxmlLoader.load();
+    	mainMenu.getMainPane().getChildren().clear();
+    	mainMenu.getMainPane().setCenter(VeterinaryMenuPane);
+    	
     }
 
+    public void showAllOptions(boolean b) {
+    	comboOrder.setVisible(b);
+    	if(b==false) {
+    		title.setText("Hospitalized Patients");
+    	}else {
+    		title.setText("Registered Patients");
+    	}
+    }
+    
 
 }

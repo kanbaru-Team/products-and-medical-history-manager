@@ -40,8 +40,8 @@ public abstract class Animal {
 		this.prev = prev;
 	}
 
-	public int getId() {
-		return id;
+	public String getId() {
+		return String.valueOf(id);
 	}
 
 	public void setId(int id) {
@@ -56,8 +56,8 @@ public abstract class Animal {
 		this.race = race;
 	}
 
-	public int getAge() {
-		return age;
+	public String getAge() {
+		return String.valueOf(age);
 	}
 
 	public void setAge(int age) {
