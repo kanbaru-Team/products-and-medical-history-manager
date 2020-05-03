@@ -15,6 +15,7 @@ public class VeterinaryMenuGUI {
 	private AddOwnerAndPatientGUI addOwnerAndPatient;
 	private RegisteredPatientsGUI registeredPatient;
 	private SearchPatientGUI searchPatient;
+	private DeletePatientGUI deletePatient;
 	
 	public VeterinaryMenuGUI(MainMenuGUI mm,Veterinary v) {
 		mainMenu = mm;
@@ -27,6 +28,9 @@ public class VeterinaryMenuGUI {
 		}
 		if(searchPatient==null) {
 			searchPatient = new SearchPatientGUI(mainMenu,this,veterinary);
+		}
+		if(deletePatient==null) {
+			deletePatient = new DeletePatientGUI(mainMenu, this, veterinary);
 		}
 	}
 	
@@ -88,6 +92,17 @@ public class VeterinaryMenuGUI {
     	
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxmlFiles/AddOwner.fxml"));
     	fxmlLoader.setController(addOwnerAndPatient);
+    	
+    	Parent addOwnerPane = fxmlLoader.load();
+    	mainMenu.getMainPane().getChildren().clear();
+    	mainMenu.getMainPane().setCenter(addOwnerPane);
+    }
+    
+    @FXML
+    void showDeletePatientMenu(ActionEvent event) throws IOException {
+
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxmlFiles/DeletePatient.fxml"));
+    	fxmlLoader.setController(deletePatient);
     	
     	Parent addOwnerPane = fxmlLoader.load();
     	mainMenu.getMainPane().getChildren().clear();
