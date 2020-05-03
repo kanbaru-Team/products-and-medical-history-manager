@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <Label alignment="CENTER" prefHeight="59.0" prefWidth="411.0" text="Search a patient" BorderPane.alignment="CENTER">
@@ -19,7 +18,7 @@
          <graphic>
             <ImageView fitHeight="43.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@veterinario.png" />
+                  <Image url="@../images/veterinario.png" />
                </image>
             </ImageView>
          </graphic>
@@ -38,12 +37,12 @@
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@lupa.png" />
+                        <Image url="@../images/lupa.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Label alignment="CENTER" layoutX="78.0" layoutY="272.0" prefHeight="29.0" prefWidth="445.0">
+            <Label alignment="CENTER" layoutX="78.0" layoutY="272.0" prefHeight="29.0" prefWidth="445.0" text="Message">
                <font>
                   <Font name="Franklin Gothic Medium" size="14.0" />
                </font>

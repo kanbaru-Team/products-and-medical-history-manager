@@ -11,54 +11,37 @@ import model.Veterinary;
 
 public class MainMenuGUI {
 
-    @FXML
-    private BorderPane mainPane;//panel principal
-    
-    Veterinary veterinary;
-    
-    public MainMenuGUI(Veterinary v) {
+	@FXML
+	private BorderPane mainPane;
+	private Veterinary veterinary;
+	private VeterinaryMenuGUI veterinaryMenu;
+	
+	public MainMenuGUI(Veterinary v) {
 		veterinary = v;
+		if(veterinaryMenu==null) {
+			veterinaryMenu = new VeterinaryMenuGUI(this,veterinary);
+		}
 	}
-    
-    //metodo para mostrar el menu de la tienda en la pantalla principal
-    @FXML
-    public void showMedicalHistoryMenu(ActionEvent event) throws IOException {
-    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("VeterinaryMenu.fxml"));
-    	fxmlLoader.setController(this);
-    	
-    	BorderPane medicalHistoryPane = fxmlLoader.load();
-    	mainPane.getChildren().clear();
-    	mainPane.setCenter(medicalHistoryPane);
-    }
 
-    //metodo para mostrar el menu del historial medico en la pantalla principal
+	@FXML
+	public void showMedicalHistoryMenu(ActionEvent event) throws IOException {
+		
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxmlFiles/VeterinaryMenu.fxml"));
+    	fxmlLoader.setController(veterinaryMenu);
+    	
+    	Parent veterinaryMenuPain = fxmlLoader.load();
+    	mainPane.getChildren().clear();
+    	mainPane.setCenter(veterinaryMenuPain);
+		
+	}
+
     @FXML
     public void showStoreMenu(ActionEvent event) {
 
-    }
-    
-    //metodo para mostrar el menu de buscar un paciente 
-    @FXML
-    public void showLookPatientMenu(ActionEvent event) {
-
-    }
-    
-    //metodo para mostrar el menu de añadir un nuevo paciente
-    @FXML
-    public void showAddPatientMenu(ActionEvent event) {
-
-    }
-    
-    //metodo para mostrar el menu de ver los pacientes hospitalizados
-    @FXML
-    public void showHospitalizedPatientsMenu(ActionEvent event) {
-
-    }
+    } 
 	
-    //metodo para mostrar el menu de ver los pacientes registrados
-    @FXML
-    void showRegisteredPatientsMenu(ActionEvent event) {
-
+    public BorderPane getMainPane() {
+    	return mainPane;
     }
-	
+    
 }
