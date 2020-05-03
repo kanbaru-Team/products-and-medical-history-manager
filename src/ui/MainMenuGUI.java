@@ -15,11 +15,15 @@ public class MainMenuGUI {
 	private BorderPane mainPane;
 	private Veterinary veterinary;
 	private VeterinaryMenuGUI veterinaryMenu;
+	private StoreMenuGUI storeMenu;
 	
 	public MainMenuGUI(Veterinary v) {
 		veterinary = v;
 		if(veterinaryMenu==null) {
 			veterinaryMenu = new VeterinaryMenuGUI(this,veterinary);
+		}
+		if(storeMenu==null) {
+			storeMenu = new StoreMenuGUI(v,this);
 		}
 	}
 
@@ -36,8 +40,15 @@ public class MainMenuGUI {
 	}
 
     @FXML
-    public void showStoreMenu(ActionEvent event) {
-
+    public void showStoreMenu(ActionEvent event) throws IOException {
+		
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxmlFiles/StoreMenu.fxml"));
+    	fxmlLoader.setController(storeMenu);
+    	
+    	Parent veterinaryMenuPain = fxmlLoader.load();
+    	mainPane.getChildren().clear();
+    	mainPane.setCenter(veterinaryMenuPain);
+    	
     } 
 	
     public BorderPane getMainPane() {
