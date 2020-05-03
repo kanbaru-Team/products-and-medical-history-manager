@@ -14,6 +14,7 @@ public class VeterinaryMenuGUI {
 	private Veterinary veterinary;
 	private AddOwnerAndPatientGUI addOwnerAndPatient;
 	private RegisteredPatientsGUI registeredPatient;
+	private SearchPatientGUI searchPatient;
 	
 	public VeterinaryMenuGUI(MainMenuGUI mm,Veterinary v) {
 		mainMenu = mm;
@@ -22,7 +23,10 @@ public class VeterinaryMenuGUI {
 			addOwnerAndPatient = new AddOwnerAndPatientGUI(mainMenu, this, veterinary);
 		}
 		if(registeredPatient==null){
-			
+			registeredPatient = new RegisteredPatientsGUI(mainMenu, this, veterinary);
+		}
+		if(searchPatient==null) {
+			searchPatient = new SearchPatientGUI(mainMenu,this,veterinary);
 		}
 	}
 	
@@ -39,25 +43,44 @@ public class VeterinaryMenuGUI {
     }
 
     @FXML
-    public void showHospitalizedPatientsMenu(ActionEvent event) {
-
+    public void showHospitalizedPatientsMenu(ActionEvent event) throws IOException {
+		
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxmlFiles/RegisteredPatients.fxml"));
+    	fxmlLoader.setController(registeredPatient);
+    	
+    	Parent registeredPatientsPane = fxmlLoader.load();
+    	mainMenu.getMainPane().getChildren().clear();
+    	mainMenu.getMainPane().setCenter(registeredPatientsPane);
+    	registeredPatient.initializeTableView();
+    	registeredPatient.showAllOptions(false);
+    	
     }
 
     @FXML
     public void showRegisteredPatientsMenu(ActionEvent event) throws IOException {
 		
-    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxmlFiles/AddPacient.fxml"));
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxmlFiles/RegisteredPatients.fxml"));
     	fxmlLoader.setController(registeredPatient);
     	
-    	Parent addPatientPane = fxmlLoader.load();
+    	Parent registeredPatientsPane = fxmlLoader.load();
     	mainMenu.getMainPane().getChildren().clear();
-    	mainMenu.getMainPane().setCenter(addPatientPane);
+    	mainMenu.getMainPane().setCenter(registeredPatientsPane);
+    	registeredPatient.initializeTableView();
+    	registeredPatient.showAllOptions(true);
     	
     }
 
     @FXML
-    public void showSearchPatientMenu(ActionEvent event) {
-
+    public void showSearchPatientMenu(ActionEvent event) throws IOException {
+		
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxmlFiles/SearchPatient.fxml"));
+    	fxmlLoader.setController(searchPatient);
+    	
+    	Parent searchPatientsPane = fxmlLoader.load();
+    	mainMenu.getMainPane().getChildren().clear();
+    	mainMenu.getMainPane().setCenter(searchPatientsPane);
+    	registeredPatient.initializeTableView();
+    	
     }
 
     @FXML
@@ -66,8 +89,8 @@ public class VeterinaryMenuGUI {
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxmlFiles/AddOwner.fxml"));
     	fxmlLoader.setController(addOwnerAndPatient);
     	
-    	Parent addPatientPane = fxmlLoader.load();
+    	Parent addOwnerPane = fxmlLoader.load();
     	mainMenu.getMainPane().getChildren().clear();
-    	mainMenu.getMainPane().setCenter(addPatientPane);
+    	mainMenu.getMainPane().setCenter(addOwnerPane);
     }
 }

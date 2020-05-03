@@ -84,9 +84,9 @@ public class AddOwnerAndPatientGUI {
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxmlFiles/VeterinaryMenu.fxml"));
     	fxmlLoader.setController(veterinaryMenu);
     	
-    	Parent addPatientPane = fxmlLoader.load();
+    	Parent VeterinaryMenuPane = fxmlLoader.load();
     	mainMenu.getMainPane().getChildren().clear();
-    	mainMenu.getMainPane().setCenter(addPatientPane);
+    	mainMenu.getMainPane().setCenter(VeterinaryMenuPane);
     	
     }
 	
