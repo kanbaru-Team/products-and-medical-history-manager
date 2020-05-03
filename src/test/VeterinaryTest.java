@@ -9,7 +9,7 @@ import model.Product;
 import model.Veterinary;
 
 class VeterinaryTest {
-	
+	/*
 	private Veterinary obj;
 	
 	Accesory n1 = new Accesory("hola", 2500, 0100, 20, 35, 1500,"blue");
@@ -56,5 +56,5 @@ class VeterinaryTest {
 		assertTrue(current.getName().equalsIgnoreCase(n6.getName()));
 		
 	}
-
+*/
 }
