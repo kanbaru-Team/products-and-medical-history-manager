@@ -70,7 +70,7 @@ public class RegisteredProductsGUI	{
 	 	refTc.setCellValueFactory(new PropertyValueFactory<Product,String>("refNum"));
 	 	priceTc.setCellValueFactory(new PropertyValueFactory<Product,String>("price"));
 	 	typeTc.setCellValueFactory(new PropertyValueFactory<Product,String>("type"));
-	 	soldUnitsTc.setCellValueFactory(new PropertyValueFactory<Product,String>("soldunits"));
+	 	soldUnitsTc.setCellValueFactory(new PropertyValueFactory<Product,String>("soldUnits"));
 	 	profitsTc.setCellValueFactory(new PropertyValueFactory<Product,String>("profits"));
     }
     

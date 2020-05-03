@@ -17,7 +17,7 @@ public abstract class Product {
 		this.price = price;
 		this.refNum = refNum;
 		this.stockUnits = stockUnits;
-		this.soldUnits = 0;
+		this.soldUnits = soldUnits;
 		this.cost = cost;
 		this.profits=0;
 		this.next=null;
