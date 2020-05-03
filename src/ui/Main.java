@@ -35,6 +35,10 @@ public class Main extends Application {
 		primaryStage.show();
 		
 	}
+	
+	public void initializeTableView() {
+		
+	}
 
 }
 

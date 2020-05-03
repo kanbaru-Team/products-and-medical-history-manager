@@ -46,7 +46,7 @@
                   <Insets right="15.0" />
                </padding>
             </Label>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" text="Buscar" GridPane.columnIndex="2" GridPane.halignment="LEFT">
+            <Button mnemonicParsing="false" onAction="#searchProduct" prefHeight="25.0" prefWidth="101.0" text="Buscar" GridPane.columnIndex="2" GridPane.halignment="LEFT">
                <GridPane.margin>
                   <Insets left="15.0" />
                </GridPane.margin>
@@ -70,14 +70,14 @@
                   </ImageView>
                </graphic>
             </Button>
-            <TextField prefHeight="25.0" prefWidth="274.0" GridPane.columnIndex="1" />
-            <TextField prefHeight="154.0" prefWidth="270.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField prefHeight="25.0" prefWidth="268.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="RefNum" prefHeight="25.0" prefWidth="274.0" GridPane.columnIndex="1" />
+            <TextField fx:id="txtToShowProduct" prefHeight="154.0" prefWidth="270.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="unitstoAdd" prefHeight="25.0" prefWidth="268.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </TextField>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" text="Agregar" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+            <Button mnemonicParsing="false" onAction="#increaseStock" prefHeight="25.0" prefWidth="103.0" text="Agregar" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="15.0" />
                </GridPane.margin>
