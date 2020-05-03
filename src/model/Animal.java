@@ -11,6 +11,7 @@ public abstract class Animal {
 	private Owner owner;
 	private Animal next;
 	private Animal prev;
+	private MedicalRecord medicalRecord;
 	
 	public Animal(int i, String r, int a, String d, String s, String m, String mh,Owner o) {
 		id = i;
@@ -22,6 +23,7 @@ public abstract class Animal {
 		owner = o;
 		prev = null;
 		next = null;
+		medicalRecord=null;
 	}
 
 	public Animal getNext() {

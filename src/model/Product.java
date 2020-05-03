@@ -7,6 +7,7 @@ public abstract class Product {
 	private int stockUnits;
 	private int soldUnits;
 	private int cost;
+	private int profits;
 	private Product next;
 	private Product prev;
 	
@@ -17,6 +18,7 @@ public abstract class Product {
 		this.stockUnits = stockUnits;
 		this.soldUnits = soldUnits;
 		this.cost = cost;
+		this.profits=0;
 		this.next=null;
 		this.prev=null;
 	}
@@ -26,35 +28,38 @@ public abstract class Product {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getPrice() {
-		return price;
+	public String getPrice() {
+		return String.valueOf(price);
 	}
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public int getRefNum() {
-		return refNum;
+	public String getRefNum() {
+		return String.valueOf(refNum);
 	}
 	public void setRefNum(int refNum) {
 		this.refNum = refNum;
 	}
-	public int getStockUnits() {
-		return stockUnits;
+	public String getStockUnits() {
+		return String.valueOf(stockUnits);
 	}
 	public void setStockUnits(int stockUnits) {
 		this.stockUnits = stockUnits;
 	}
-	public int getSoldUnits() {
-		return soldUnits;
+	public String getSoldUnits() {
+		return String.valueOf(soldUnits);
 	}
 	public void setSoldUnits(int soldUnits) {
 		this.soldUnits = soldUnits;
 	}
-	public int getCost() {
-		return cost;
+	public String getCost() {
+		return String.valueOf(cost);
 	}
 	public void setCost(int cost) {
 		this.cost = cost;
+	}
+	public String getProfits() {
+		return String.valueOf(price*soldUnits);
 	}
 	public Product getNext() {
 		return next;

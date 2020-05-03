@@ -36,9 +36,6 @@ public class Main extends Application {
 		
 	}
 	
-	public void initializeTableView() {
-		
-	}
 
 }
 
