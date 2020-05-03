@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <Label alignment="CENTER" prefHeight="72.0" prefWidth="417.0" text="Store Menu" BorderPane.alignment="CENTER">
@@ -19,7 +18,7 @@
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@compras.png" />
+                  <Image url="@../images/compras.png" />
                </image>
             </ImageView>
          </graphic>
@@ -36,7 +35,7 @@
                <graphic>
                   <ImageView fitHeight="39.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@ojo.png" />
+                        <Image url="@../images/ojo.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -48,7 +47,7 @@
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@borrar.png" />
+                        <Image url="@../images/borrar.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -60,7 +59,7 @@
                <graphic>
                   <ImageView fitHeight="33.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@lupa.png" />
+                        <Image url="@../images/lupa.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -72,7 +71,7 @@
                <graphic>
                   <ImageView fitHeight="34.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@interfaz.png" />
+                        <Image url="@../images/interfaz.png" />
                      </image>
                   </ImageView>
                </graphic>

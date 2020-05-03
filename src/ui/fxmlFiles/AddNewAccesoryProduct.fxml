@@ -4,13 +4,15 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.241" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <GridPane prefHeight="304.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -96,20 +98,41 @@
                <GridPane.margin>
                   <Insets right="120.0" />
                </GridPane.margin>
+               <graphic>
+                  <ImageView fitHeight="27.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/responder.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
             <Button mnemonicParsing="false" onAction="#createNewAccessoryProduct" prefHeight="25.0" prefWidth="90.0" text="Agregar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="120.0" />
                </GridPane.margin>
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/mas.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
          </children>
       </GridPane>
    </bottom>
    <top>
-      <Label text="Agregar producto" BorderPane.alignment="CENTER">
+      <Label alignment="CENTER" prefHeight="45.0" prefWidth="256.0" text="Agregar producto" BorderPane.alignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/inventario.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Label>
    </top>
 </BorderPane>

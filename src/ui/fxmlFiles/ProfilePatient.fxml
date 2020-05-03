@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
@@ -136,7 +135,7 @@
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@responder.png" />
+                        <Image url="@../images/responder.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -146,7 +145,10 @@
                   <Font name="Franklin Gothic Medium" size="28.0" />
                </font>
             </Label>
-            <ImageView fitHeight="56.0" fitWidth="88.0" layoutX="427.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="56.0" fitWidth="88.0" layoutX="427.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/perro_menu_photo.jpg" />
+               </image></ImageView>
          </children>
       </AnchorPane>
    </top>
@@ -157,7 +159,7 @@
                <graphic>
                   <ImageView fitHeight="26.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@documento.png" />
+                        <Image url="@../images/documento.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -169,7 +171,7 @@
                <graphic>
                   <ImageView fitHeight="29.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@refrescar.png" />
+                        <Image url="@../images/refrescar.png" />
                      </image>
                   </ImageView>
                </graphic>

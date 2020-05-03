@@ -109,10 +109,6 @@ public class Veterinary {
 		return prods;
 		
 	}
-	////
-	public Product getFirstProduct() {
-		return firstProd;
-	}
 	
 	public void addPatient(int i, String r, int a, String d, String s, String m, String mh, Owner o, String other, int patientType) {
 		
