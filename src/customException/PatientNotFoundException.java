@@ -3,9 +3,9 @@ package customException;
 @SuppressWarnings("serial")
 public class PatientNotFoundException extends Exception {
 	
-	private int id;
+	private String id;
 	
-	public PatientNotFoundException(int n) {
+	public PatientNotFoundException(String n) {
 		super(" was not found.");
 		id = n;
 	}

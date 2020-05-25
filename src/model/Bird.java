@@ -4,8 +4,8 @@ public class Bird extends Animal{
 
 	private String featherColor;
 	
-	public Bird(String n, String i, String r, int a, String d, String s, String m, String mh, Owner o, String fc) {
-		super(n, i, r, a, d, s, m, mh, o);
+	public Bird(String n, String i, String r, int a, String d, String s, String mh, Owner o, String fc) {
+		super(n, i, r, a, d, s, mh, o);
 		featherColor = fc;
 	}
 

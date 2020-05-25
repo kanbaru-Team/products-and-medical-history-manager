@@ -5,8 +5,8 @@ public class Food extends Product implements Species{
 	private String species;
 	private double weight;
 
-	public Food(String n, int p, String rn, int su, int cos,int stu,String type, String s, double w) {
-		super(n,p,rn,su,su,cos,type);
+	public Food(String n, int p, String rn, int stu, int su,int cos,String type, String s, double w) {
+		super(n,p,rn,stu,su,cos,type);
 		species = s;
 		weight = w;
 	}

@@ -4,6 +4,9 @@ import customException.MedicalRecordDontExistYet;
 
 public abstract class Animal {
 	
+	public final static String HEALTHY = "Saludable";
+	public final static String HOSPITALIZED = "Hospitalizado";
+	public final static String TREATMENT = "Tratamiento";
 	
 	private String name;
 	private String id;
@@ -17,7 +20,7 @@ public abstract class Animal {
 	private Animal prev;
 	private MedicalRecord medicalRecord;
 	
-	public Animal(String name,String i, String r, int a, String d, String s, String m, String mh,Owner o) {
+	public Animal(String name,String i, String r, int a, String d, String s, String mh,Owner o) {
 		this.name=name;
 		id = i;
 		race = r;
@@ -114,5 +117,14 @@ public abstract class Animal {
 			throw new MedicalRecordDontExistYet(name,id);
 		}
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public MedicalRecord getMedicalRecord() {
+		return medicalRecord;
+	}
+	
 
 }

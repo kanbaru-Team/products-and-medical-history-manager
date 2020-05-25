@@ -1,6 +1,6 @@
 package model;
 
-public abstract class Product {
+public abstract class Product implements CalculateProfit, SellProduct, CalculateEarnings{
 	private String name;
 	private int price;
 	private String refNum;
@@ -82,12 +82,19 @@ public abstract class Product {
 	public void setPrev(Product prev) {
 		this.prev = prev;
 	}
-	
-	public void increaseSoldUnits(int unitsToSold) {
-		soldUnits+=unitsToSold;
-	}
-	public void decreaseStockUnits(int units) {
-		stockUnits-=units;
-	}
 
+	public void calculateProfit() {
+		profits = (price*soldUnits)-(cost*soldUnits);
+		
+	}
+	public void sellProduct(int units) {
+		soldUnits+=units;
+		stockUnits-=units;
+		
+	}
+	public String calculateEarnings() {
+		int earnings = price*soldUnits;
+		
+		return String.valueOf(earnings);
+	}
 }
