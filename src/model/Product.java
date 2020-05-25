@@ -3,7 +3,7 @@ package model;
 public abstract class Product {
 	private String name;
 	private int price;
-	private int refNum;
+	private String refNum;
 	private int stockUnits;
 	private int soldUnits;
 	private int cost;
@@ -12,7 +12,7 @@ public abstract class Product {
 	private Product next;
 	private Product prev;
 	
-	public Product(String name, int price, int refNum, int stockUnits, int soldUnits, int cost,String type) {
+	public Product(String name, int price, String refNum, int stockUnits, int soldUnits, int cost,String type) {
 		this.name = name;
 		this.price = price;
 		this.refNum = refNum;
@@ -37,9 +37,9 @@ public abstract class Product {
 		this.price = price;
 	}
 	public String getRefNum() {
-		return String.valueOf(refNum);
+		return refNum;
 	}
-	public void setRefNum(int refNum) {
+	public void setRefNum(String refNum) {
 		this.refNum = refNum;
 	}
 	public String getStockUnits() {
@@ -81,6 +81,13 @@ public abstract class Product {
 	}
 	public void setPrev(Product prev) {
 		this.prev = prev;
+	}
+	
+	public void increaseSoldUnits(int unitsToSold) {
+		soldUnits+=unitsToSold;
+	}
+	public void decreaseStockUnits(int units) {
+		stockUnits-=units;
 	}
 
 }

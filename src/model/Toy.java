@@ -8,7 +8,7 @@ public class Toy extends Product{
 	private String color;
 	private String size;
 
-	public Toy(String n, int p, int rn, int su, int cos,int stu, String type, String col, String s) {
+	public Toy(String n, int p, String rn, int su, int cos,int stu, String type, String col, String s) {
 		super(n,p,rn,stu,su,cos,type);
 		color = col;
 		size = s;

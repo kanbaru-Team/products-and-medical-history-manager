@@ -1,8 +1,12 @@
 package model;
 
-public abstract class Animal {
+import customException.MedicalRecordDontExistYet;
 
-	private int id;
+public abstract class Animal {
+	
+	
+	private String name;
+	private String id;
 	private String race;
 	private int age;
 	private String description;
@@ -13,7 +17,8 @@ public abstract class Animal {
 	private Animal prev;
 	private MedicalRecord medicalRecord;
 	
-	public Animal(int i, String r, int a, String d, String s, String m, String mh,Owner o) {
+	public Animal(String name,String i, String r, int a, String d, String s, String m, String mh,Owner o) {
+		this.name=name;
 		id = i;
 		race = r;
 		age = a;
@@ -43,10 +48,10 @@ public abstract class Animal {
 	}
 
 	public String getId() {
-		return String.valueOf(id);
+		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -87,7 +92,7 @@ public abstract class Animal {
 	}
 
 	public void setMedicalHistory(String medicalHistory) {
-		this.medicalHistory = medicalHistory;
+		this.medicalHistory += medicalHistory;
 	}
 
 	public Owner getOwner() {
@@ -98,6 +103,16 @@ public abstract class Animal {
 		this.owner = owner;
 	}
 	
-	
+	public void createMedicalRecord(String genInf,String detInf) {
+		medicalRecord= new MedicalRecord(genInf,detInf);
+	}
+	public void updateMedicalRecord(String genInf,String detInf) throws MedicalRecordDontExistYet {
+		if(medicalRecord!=null) {
+			medicalRecord.setGeneralInfo(genInf);
+			medicalRecord.setDetailInfo(detInf);
+		}else {
+			throw new MedicalRecordDontExistYet(name,id);
+		}
+	}
 
 }

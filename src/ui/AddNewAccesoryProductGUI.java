@@ -46,7 +46,7 @@ public class AddNewAccesoryProductGUI {
 	    		String name = newProductName.getText();
 	        	String color = newProductColor.getText();
 	        	int stockUnits = Integer.parseInt(newProductQuantity.getText());
-	        	int refNumber = Integer.parseInt(newProductID.getText());
+	        	String refNumber = newProductID.getText();
 	        	int price = Integer.parseInt(newProductPrice.getText());
 	        	int cost = Integer.parseInt(newProductCost.getText());
 	    		

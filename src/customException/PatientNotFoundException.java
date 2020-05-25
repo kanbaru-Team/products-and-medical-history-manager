@@ -3,16 +3,16 @@ package customException;
 @SuppressWarnings("serial")
 public class PatientNotFoundException extends Exception {
 	
-	private String name;
+	private int id;
 	
-	public PatientNotFoundException(String n) {
+	public PatientNotFoundException(int n) {
 		super(" was not found.");
-		name = n;
+		id = n;
 	}
 	
 	@Override
 	public String toString() {
-		return "patient "+name+super.toString();
+		return "patient identified with "+id+super.toString();
 	}
 	
 }

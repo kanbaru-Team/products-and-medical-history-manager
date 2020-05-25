@@ -2,7 +2,7 @@ package model;
 
 public class Owner{
 
-	private int id;
+	private long id;
 	private String name;
 	private String address;
 	private String phoneNumber;
@@ -10,7 +10,7 @@ public class Owner{
 	private Owner left;
 	private Owner right;
 
-	public Owner(int i, String n,String a,String pn ){
+	public Owner(long i, String n,String a,String pn ){
 		id = i;
 		name = n;
 		address = a;
@@ -20,11 +20,11 @@ public class Owner{
 		right = null;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

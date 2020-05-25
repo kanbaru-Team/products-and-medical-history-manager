@@ -4,11 +4,11 @@ package customException;
 public class NoItemsInStockException extends Exception{
 
 	String name;
-	int stock;
+	String stock;
 	int uNeeded;
 	
-	public NoItemsInStockException(String n, int s, int un) {
-		super("no se puede vender este producto");
+	public NoItemsInStockException(String n, String s, int un) {
+		super("you have not enough items in stock: \n");
 		name = n;
 		stock = s;
 		uNeeded = un;

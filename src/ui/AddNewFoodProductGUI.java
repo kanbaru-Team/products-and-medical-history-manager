@@ -52,7 +52,7 @@ public class AddNewFoodProductGUI {
 	        	double weight = Double.parseDouble(newProductWeight.getText());
 	        	String specie = newProductSpecies.getValue();
 	        	int stockUnits = Integer.parseInt(newProductQuantity.getText());
-	        	int refNumber = Integer.parseInt(newProductID.getText());
+	        	String refNumber = newProductID.getText();
 	        	int price = Integer.parseInt(newProductPrice.getText());
 	        	int cost = Integer.parseInt(newProductCost.getText());
 	    		
