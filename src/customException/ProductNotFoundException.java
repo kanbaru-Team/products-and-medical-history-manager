@@ -12,7 +12,7 @@ public class ProductNotFoundException extends Exception{
 	
 	@Override
 	public String toString() {
-		return "patient "+name+super.toString();
+		return "Product with reference: "+name+super.getMessage();
 	}
 	
 }

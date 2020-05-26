@@ -62,7 +62,7 @@
                   <Font name="Franklin Gothic Medium" size="18.0" />
                </font>
             </Label>
-            <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="326.0" text="Lastname:" GridPane.rowIndex="1">
+            <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="326.0" text="ID:" GridPane.rowIndex="1">
                <font>
                   <Font name="Franklin Gothic Medium" size="18.0" />
                </font>

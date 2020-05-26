@@ -2,6 +2,7 @@ package ui;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,6 +16,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Product;
 import model.Veterinary;
+import threads.RegisteredProductsThread;
 
 public class RegisteredProductsGUI	{
 	
@@ -63,8 +65,13 @@ public class RegisteredProductsGUI	{
     	storeMenu.initializeComboBox();
     }
     
- public void initializeTableView() {
-	 	ObservableList obs = FXCollections.observableArrayList(vet.showAllProducts());
+    public void initialize() {
+    	RegisteredProductsThread rpt = new RegisteredProductsThread(this, vet);
+    	rpt.start();
+    }
+    
+    public void initializeTableView( List <Product> products  ) {
+	 	ObservableList obs = FXCollections.observableArrayList(products);
 	 	productsList.setItems(obs);
 	 	nameTc.setCellValueFactory(new PropertyValueFactory<Product,String>("name"));
 	 	refTc.setCellValueFactory(new PropertyValueFactory<Product,String>("refNum"));
@@ -74,6 +81,16 @@ public class RegisteredProductsGUI	{
 	 	profitsTc.setCellValueFactory(new PropertyValueFactory<Product,String>("profits"));
     }
     
+ 
+    public void initializeComboBox() {
+    	comboSortBy.getItems().addAll("Ordenar por precio","Ordenar por tipo","Ordenar por referencia","Ordenar por beneficios");
+    }
     
-
+    public String getComboBox() {
+    	return comboSortBy.getValue();
+    }
+    
+   public void initializeComboBoxType() {
+	   comboSortBy.getItems().addAll("Mostrar Accesorios","Mostrar Comida","Mostrar Juguetes");
+   }
 }

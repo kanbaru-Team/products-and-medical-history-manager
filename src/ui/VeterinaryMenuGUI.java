@@ -43,7 +43,10 @@ public class VeterinaryMenuGUI {
     	Parent addPatientPane = fxmlLoader.load();
     	mainMenu.getMainPane().getChildren().clear();
     	mainMenu.getMainPane().setCenter(addPatientPane);
-    	
+    	addOwnerAndPatient.initializateStatus();
+    	addOwnerAndPatient.initializeSpecie();
+    	addOwnerAndPatient.initializeOwner();
+    	addOwnerAndPatient.initiaLizeOther();
     }
 
     @FXML

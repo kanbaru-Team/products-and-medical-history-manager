@@ -1,10 +1,13 @@
 package ui;
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import model.Veterinary;
 
 public class Main extends Application {
@@ -31,8 +34,16 @@ public class Main extends Application {
 		Scene scene = new Scene(root,900,500);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("veterinary");
-		primaryStage.setResizable(false);
+		primaryStage.setResizable(true);
 		primaryStage.show();
+		
+		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+		    @Override
+		    public void handle(WindowEvent t) {
+		        Platform.exit();
+		        System.exit(0);
+		    }
+		});
 		
 	}
 	

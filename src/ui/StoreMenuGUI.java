@@ -116,8 +116,9 @@ public class StoreMenuGUI {
     	Parent registeredProductsPane = fxmlLoader.load();
     	menumain.getMainPane().getChildren().clear();
     	menumain.getMainPane().setCenter(registeredProductsPane);
-    	registeredProducts.initializeTableView();
-   
+    	registeredProducts.initializeTableView(veterinary.showAllProducts());
+    	registeredProducts.initializeComboBox();
+    	
     }
 
     @FXML
@@ -128,7 +129,8 @@ public class StoreMenuGUI {
     	Parent registeredProductsPane = fxmlLoader.load();
     	menumain.getMainPane().getChildren().clear();
     	menumain.getMainPane().setCenter(registeredProductsPane);
-    	registeredProducts.initializeTableView();
+    	registeredProducts.initializeTableView(veterinary.showAllProducts());
+    	registeredProducts.initializeComboBoxType();
     }
     
 	public void initializeComboBox() {

@@ -12,7 +12,7 @@ public class PatientNotFoundException extends Exception {
 	
 	@Override
 	public String toString() {
-		return "patient identified with "+id+super.toString();
+		return "patient identified with "+id+super.getMessage();
 	}
 	
 }

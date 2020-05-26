@@ -8,8 +8,8 @@ public class Cat extends Animal{
 	public final static String RESTLESS = "restless";
 	private String behavior;
 	
-	public Cat(String n, String i, String r, int a, String d, String s, String mh, Owner o, String b) {
-		super(n, i, r, a, d, s, mh, o);
+	public Cat(String n, String i, String r, int a, String d, String s, String mh, Owner o,String specie, String b) {
+		super(n, i, r, a, d, s, mh, o,specie);
 		behavior = b;
 	}
 

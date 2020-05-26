@@ -97,4 +97,11 @@ public abstract class Product implements CalculateProfit, SellProduct, Calculate
 		
 		return String.valueOf(earnings);
 	}
+	
+	@Override
+	public String toString() {
+		return "Name: "+ name + "\n"+"Reference: "+refNum+"\n"
+				+"Type: "+type+"\n"+"Units in stock: "+stockUnits
+				+"\n"+"Profits : "+ profits;
+	}
 }

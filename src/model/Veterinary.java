@@ -1,5 +1,8 @@
 package model;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -10,6 +13,7 @@ import java.util.List;
 import customException.MedicalRecordDontExistYet;
 import customException.NoItemsInStockException;
 import customException.PatientNotFoundException;
+import customException.ProductNotFoundException;
 
 public class Veterinary {
 	private Product firstProd;
@@ -17,12 +21,15 @@ public class Veterinary {
 	private Animal firstAnimal;
 	private Animal lastAnimal;
 	private Owner firstOwner;
+	private Clock clock;
+	
 	public Veterinary() {
 		this.firstProd=null;
 		this.lastProd=null;
 		this.firstAnimal=null;
 		this.lastAnimal=null;
 		this.firstOwner=null;
+		clock = new Clock();
 	}
 	public Product getFirstProduct() {
 		return firstProd;
@@ -125,24 +132,24 @@ public class Veterinary {
 
 	}
 
-	public void addPatient(String n, String i, String r, int a, String d, String s, String mh, Owner o, String other, int patientType) {
+	public void addPatient(String n, String i, String r, int a, String d, String s, String mh, Owner o,String specie, String other, int patientType) {
 		Animal toAdd = null;
 		
 		switch(patientType) {
 		case 0:
-			toAdd = new Dog(n, i, r, a, d, s, mh, o, other);
+			toAdd = new Dog(n, i, r, a, d, s, mh, o,"Dog",other);
 			break;
 			
 		case 1:
-			toAdd = new Cat(n, i, r, a, d, s, mh, o, other);
+			toAdd = new Cat(n, i, r, a, d, s, mh, o, "Cat", other);
 			break;
 			
 		case 2:
-			toAdd = new Bird(n, i, r, a, d, s, mh, o, other);
+			toAdd = new Bird(n, i, r, a, d, s, mh, o,"Bird", other);
 			break;
 			
 		case 3:
-			toAdd = new Rodent(n, i, r, a, d, s, mh, o, other);
+			toAdd = new Rodent(n, i, r, a, d, s, mh, o,"Rodent", other);
 			break;
 		}
 		
@@ -194,6 +201,30 @@ public class Veterinary {
 		}
 	}
 	
+	public ArrayList<String> showAllOwner(){
+		ArrayList<String> owners = new ArrayList<String>();
+		if(firstOwner!=null) {
+			owners.addAll(showAllOwner(firstOwner));
+		}
+		return owners;
+	}
+	
+	private ArrayList<String> showAllOwner(Owner current){
+		ArrayList<String> owners = new ArrayList<String>();
+		
+		if(current.getRight()!=null) {
+			owners.addAll(showAllOwner(current.getRight()));
+		}
+		
+		owners.add(current.getName());
+		
+		if(current.getLeft()!=null) {
+			owners.addAll(showAllOwner(current.getLeft()));
+		}
+		
+		return owners;
+	}
+	
 	public Owner lookForOwner(long id) {
 		if(firstOwner!=null) {
 			return lookForOwner(firstOwner,id);
@@ -216,7 +247,7 @@ public class Veterinary {
 	}
 	
 	//
-	public void createMedicalRecord(String id,String generalInf, String detailedInf) throws PatientNotFoundException {
+	public void createMedicalRecord(String id,String generalInf, String detailedInf) throws PatientNotFoundException, MedicalRecordDontExistYet {
 		Animal ani = lookForPatient(id);
 		if(ani!=null) {
 			ani.createMedicalRecord(generalInf, detailedInf);
@@ -252,7 +283,8 @@ public class Veterinary {
 		}
 	}
 	//
-	public Animal lookForPatient(String id) {
+	public Animal lookForPatient(String id) throws PatientNotFoundException {
+		Animal a;
 		Comparator <Animal> comp = new Comparator <Animal> () {
 
 			@Override
@@ -265,11 +297,16 @@ public class Veterinary {
 		};		
 		ArrayList <Animal> animals = turnPatientsIntoArrayList();
 		Collections.sort(animals,comp);
-		return lookForPatient(animals,id);
+		a= lookForPatient(animals,id);
+		if(a==null) {
+			throw new PatientNotFoundException(id);
+		}
+		return a;
 		
 	}
 	
 	private Animal lookForPatient(ArrayList <Animal> animals,String id) {
+
 		Animal a =null;
 		int mid;
 		int low=0;
@@ -288,17 +325,49 @@ public class Veterinary {
 		}
 		return a;
 	}
+	
 	public List<Animal> showAllHospitalizedPatients(){
 		ArrayList<Animal> patients = new ArrayList<Animal>();
 		patients = turnPatientsIntoArrayList();
 
+		for(int i=0;i<patients.size();i++) {
+			
+			if(!(patients.get(i).getStatus().equalsIgnoreCase(Animal.HOSPITALIZED))) {
+				patients.remove(i);
+				i--;
+			}
+		}
+		
 		return patients;
 	}
 
 	public List<Animal> showAllPatientByID(){
 		ArrayList<Animal> patients = new ArrayList<Animal>();
 		patients = turnPatientsIntoArrayList();
-
+		
+		for(int i=1;i<patients.size();i++) {
+			
+			Animal aux = patients.get(i);
+			boolean flag = false;
+			int j = i-1;
+			
+			while(j>=0 && !flag) {
+				String auxAnimalRace = aux.getId();
+				String currentAnimalRace = patients.get(j).getId();
+				
+				if(auxAnimalRace.compareTo(currentAnimalRace)<0) {
+					patients.set(j+1, patients.get(j));
+					j--;
+				}else {
+					flag = true;
+				}
+			}
+			patients.set(j+1, aux);
+		}
+		
+		
+		
+		
 		return patients;
 	}
 
@@ -308,7 +377,7 @@ public class Veterinary {
 		for(int i=0;i<patients.size();i++) {
 			int minIndex = i;
 			
-			for(int j=i+1;j<patients.size();j++) {
+			for(int j=i+1;j<patients.size() ;j++) {
 				int minPatientAge = Integer.parseInt(patients.get(minIndex).getAge());
 				int currentPatientAge = Integer.parseInt(patients.get(j).getAge());
 				
@@ -326,15 +395,23 @@ public class Veterinary {
 		
 	}
 
-	public List<Animal> showAllPatientBySpecies(){
+	public List<Animal> showAllPatientByRace(){
 		ArrayList<Animal> patients = new ArrayList<Animal>();
 		patients = turnPatientsIntoArrayList();
-
+		for(int i=0;i<patients.size();i++) {
+			Animal aux = patients.get(i);
+			int j=i-1;
+			while(j>=0 && patients.get(j).getRace().compareToIgnoreCase(aux.getRace())>0) {
+				patients.set(j+1, patients.get(j));
+				j--;
+			}
+			patients.set(j+1, aux);
+		}
 		return patients;
 	}
 ////////////////////////////////////////////////////////////////////////////////////
 	//ya esta hecho (falta hacer pruebas)
-	public Product lookForProduct(String rn) {
+	public Product lookForProduct(String rn) throws ProductNotFoundException {
 		Product p = null;
 		
 		if(firstProd!=null) {
@@ -359,6 +436,9 @@ public class Veterinary {
 			};
 			Collections.sort(products,co);
 			p = lookForProductBinary(products, rn);
+		}
+		if(p==null) {
+			throw new ProductNotFoundException(rn);
 		}
 		return p;
 	}
@@ -490,7 +570,7 @@ public class Veterinary {
 	}
 //////////////////////////////////////////////////////////////////////////////////////
 
-	public void deleteProduct(String rn) {
+	public void deleteProduct(String rn) throws ProductNotFoundException {
 		if(firstProd!=null) {
 			Product toDelete = lookForProduct(rn);
 			Product prev = toDelete.getPrev();
@@ -508,10 +588,12 @@ public class Veterinary {
 			if(toDelete==lastProd) {
 				lastProd = prev;
 			}
+		}else {
+			throw new ProductNotFoundException(rn);
 		}
 	}
 
-	public void deletePatient(String id) {
+	public void deletePatient(String id) throws PatientNotFoundException {
 		if(firstAnimal!=null) {
 			Animal toDelete = lookForPatient(id);
 			Animal prev = toDelete.getPrev();
@@ -529,13 +611,24 @@ public class Veterinary {
 			if(toDelete==lastAnimal) {
 				lastAnimal = prev;
 			}
+		}else {
+			throw new PatientNotFoundException(id);
 		}
 	}
 
-	public void printMedicalHistory(int id) {
-
+	public void printMedicalHistory(String id) throws IOException, PatientNotFoundException {
+		
+		Animal a = lookForPatient(id);
+		if(a!=null) {
+			String name = a.getName()+"_"+a.getId();
+			BufferedWriter bw = new BufferedWriter(new FileWriter("medicalHistorires/"+name));
+			bw.write(a.getMedicalHistory());
+			bw.close();
+		}else {
+			throw new PatientNotFoundException(id);
+		}
+	
 	}
-
 
 	public void sellProduct(String refNum, int unitsToSold) throws NoItemsInStockException {		
 		boolean val=false;
@@ -555,7 +648,7 @@ public class Veterinary {
 		}
 	}
 
-	public void increaseStock(String refNum, int units) {
+	public void increaseStock(String refNum, int units) throws ProductNotFoundException {
 
 		if(firstProd!=null) {
 			Product p = lookForProduct(refNum);
@@ -564,6 +657,8 @@ public class Veterinary {
 				units+=Integer.parseInt(p.getStockUnits());
 				p.setStockUnits(units);
 			}
+		}else {
+			throw new ProductNotFoundException(refNum);
 		}
 	}
 	
@@ -587,9 +682,7 @@ public class Veterinary {
 		
 		return products;
 	}
-	
-	
-	
+		
 	public ArrayList<Animal> turnPatientsIntoArrayList(){
 		ArrayList <Animal> animals= new ArrayList<Animal>();
 		
@@ -603,4 +696,19 @@ public class Veterinary {
 		return animals;
 	}
 	
+	public String runClock() {
+		clock.run();
+		
+		return clock.toString();
+	}
+	
+	public void addGeneralInfo(String id) throws PatientNotFoundException, MedicalRecordDontExistYet {
+		Animal a = lookForPatient(id);
+		if(a!=null && a.getMedicalRecord()!=null) {
+			a.setMedicalHistory("\n"+a.getMedicalRecord().getGeneralInfo());
+		}else {
+			throw new MedicalRecordDontExistYet(id);
+		}
+			
+	}
 }

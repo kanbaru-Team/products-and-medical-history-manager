@@ -2,17 +2,15 @@ package customException;
 
 @SuppressWarnings("serial")
 public class MedicalRecordDontExistYet extends Exception {
-	private String name;
 	private String id;
-	public MedicalRecordDontExistYet(String name,String id) {
-		super("The medical record has not been created yet. ");
-		this.name=name;
+	public MedicalRecordDontExistYet(String id) {
+		super("The medical record has not been created yet or already exist. ");
 		this.id=id;
 	}
 	
 	@Override
 	public String toString() {
-		String msg = "The patient "+name+" identified with the ID "+id+ " dont have a medical record assigned yet";
-		return super.toString()+msg;
+		String msg = "The patient identified with the ID "+id+ " dont have a medical record assigned yet or you're trying to create a new Medical Record in this case you have to update it.";
+		return super.getMessage()+msg;
 	}
 }

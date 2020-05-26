@@ -56,8 +56,8 @@ public class AddNewToyProductGUI {
 	        	int price = Integer.parseInt(newProductPrice.getText());
 	        	int cost = Integer.parseInt(newProductCost.getText());
 	    		
-	        	vet.addProduct(name,  price,  refNumber,  0,  cost,  stockUnits,"Toy", color, size);
-	        
+	        	vet.addProduct(name,  price,  refNumber,  stockUnits,  0,  cost,"Toy", color, size);
+	        	
         	    Alert alert = new Alert(Alert.AlertType.INFORMATION);
         	    alert.setHeaderText(null);
         	    alert.setTitle("Success");

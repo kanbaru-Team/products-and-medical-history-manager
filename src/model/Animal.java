@@ -8,6 +8,7 @@ public abstract class Animal {
 	public final static String HOSPITALIZED = "Hospitalizado";
 	public final static String TREATMENT = "Tratamiento";
 	
+	private String specie;
 	private String name;
 	private String id;
 	private String race;
@@ -20,13 +21,14 @@ public abstract class Animal {
 	private Animal prev;
 	private MedicalRecord medicalRecord;
 	
-	public Animal(String name,String i, String r, int a, String d, String s, String mh,Owner o) {
+	public Animal(String name,String i, String r, int a, String d, String s, String mh,Owner o,String specie) {
 		this.name=name;
 		id = i;
 		race = r;
 		age = a;
 		description = d;
 		status = s;
+		this.specie=specie;
 		medicalHistory = mh;
 		owner = o;
 		prev = null;
@@ -106,15 +108,15 @@ public abstract class Animal {
 		this.owner = owner;
 	}
 	
-	public void createMedicalRecord(String genInf,String detInf) {
-		medicalRecord= new MedicalRecord(genInf,detInf);
+	public void createMedicalRecord(String genInf,String detInf)  {
+		medicalRecord= new MedicalRecord(genInf,detInf);	
 	}
 	public void updateMedicalRecord(String genInf,String detInf) throws MedicalRecordDontExistYet {
 		if(medicalRecord!=null) {
 			medicalRecord.setGeneralInfo(genInf);
 			medicalRecord.setDetailInfo(detInf);
 		}else {
-			throw new MedicalRecordDontExistYet(name,id);
+			throw new MedicalRecordDontExistYet(id);
 		}
 	}
 
@@ -124,6 +126,10 @@ public abstract class Animal {
 
 	public MedicalRecord getMedicalRecord() {
 		return medicalRecord;
+	}
+
+	public String getSpecie() {
+		return specie;
 	}
 	
 

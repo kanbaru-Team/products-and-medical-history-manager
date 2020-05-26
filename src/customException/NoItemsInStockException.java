@@ -17,7 +17,7 @@ public class NoItemsInStockException extends Exception{
 	@Override
 	public String toString() {
 		String message = "the product "+name+" have a stock of "+stock+" units, and are needed "+ uNeeded+" units";
-		return super.toString()+"\n"+message;
+		return super.getMessage()+"\n"+message;
 	}
 	
 }

@@ -6,8 +6,8 @@ public class Rodent extends Animal {
 	public static final String SHORT_TAIL = "short tail";
 	public String tailSize;
 	
-	public Rodent(String n, String i, String r, int a, String d, String s, String mh, Owner o, String ts) {
-		super(n, i, r, a, d, s, mh, o);
+	public Rodent(String n, String i, String r, int a, String d, String s, String mh, Owner o,String specie, String ts) {
+		super(n, i, r, a, d, s, mh, o,specie);
 		tailSize = ts;
 	}
 

@@ -2,10 +2,13 @@ package ui;
 
 import java.io.IOException;
 
+import customException.PatientNotFoundException;
+import customException.ProductNotFoundException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import model.Veterinary;
 
@@ -26,7 +29,38 @@ public class DeletePatientGUI {
 
     @FXML
     void deletePatient(ActionEvent event) {
-
+    	if(!patiendID.getText().isEmpty()) {
+    		try {
+    			Integer.parseInt(patiendID.getText());
+    			veterinary.deletePatient(patiendID.getText());
+    			
+       			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    			alert.setHeaderText(null);
+    			alert.setTitle("Alert");
+    			alert.setContentText("patient deleted");
+    			alert.showAndWait();
+    			
+    		}catch(NumberFormatException e) {
+       			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    			alert.setHeaderText(null);
+    			alert.setTitle("Alert");
+    			alert.setContentText("value given must be numeric");
+    			alert.showAndWait();
+    		}catch (PatientNotFoundException e) {
+       			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    			alert.setHeaderText(null);
+    			alert.setTitle("Alert");
+    			alert.setContentText(e.toString());
+    			alert.showAndWait();
+			}
+    		
+    	}else {
+   			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.setHeaderText(null);
+			alert.setTitle("Alert");
+			alert.setContentText("field for reference number is empty");
+			alert.showAndWait();
+    	}
     }
 
     @FXML

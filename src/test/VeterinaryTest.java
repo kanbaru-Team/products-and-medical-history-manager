@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import customException.MedicalRecordDontExistYet;
 import customException.NoItemsInStockException;
 import customException.PatientNotFoundException;
+import customException.ProductNotFoundException;
 import model.Accesory;
 import model.Animal;
 import model.Owner;
@@ -37,17 +38,17 @@ class VeterinaryTest {
 	public void setup2() {
 		
 		//add 2 dogs
-		obj.addPatient("lucas", "1234567", "Akita Inu", 5, "huele a limon :v", Animal.HEALTHY, "dfdas", null, "", 0);
-		obj.addPatient("roberto", "9999999", "Bobtail", 10, "le gusta morder zapatos", Animal.HEALTHY, "dsfa", null, "", 0);
+		obj.addPatient("lucas", "1234567", "Akita Inu", 5, "huele a limon :v", Animal.HEALTHY, "dfdas", null,"dfsdf", "", 0);
+		obj.addPatient("roberto", "9999999", "Bobtail", 10, "le gusta morder zapatos", Animal.HEALTHY, "dsfa", null,"fgsf", "", 0);
 		//add 2 cats
-		obj.addPatient("pelusa", "0000134", "Savannah", 4, "anda enojado a cada rato", Animal.HEALTHY, "dfg", null, "", 1);
-		obj.addPatient("kuro", "2683563", "Gato birmano", 2, "ya no se que inventarme", Animal.HEALTHY, "efs", null, "", 1);
+		obj.addPatient("pelusa", "0000134", "Savannah", 4, "anda enojado a cada rato", Animal.HEALTHY, "dfg", null,"fgsf", "", 1);
+		obj.addPatient("kuro", "2683563", "Gato birmano", 2, "ya no se que inventarme", Animal.HEALTHY, "efs", null,"fgsf", "", 1);
 		//add 2 rodents
-		obj.addPatient("roberto", "3850275", "Hamster Campbell", 1, "aaaa", Animal.HEALTHY, "gfd", null, "", 3);
-		obj.addPatient("nose", "3920582", "Hamster Roborovski", 2, "bbbb", Animal.HEALTHY, "fgre", null, "", 3);
+		obj.addPatient("roberto", "3850275", "Hamster Campbell", 1, "aaaa", Animal.HEALTHY, "gfd", null,"fgsf", "", 3);
+		obj.addPatient("nose", "3920582", "Hamster Roborovski", 2, "bbbb", Animal.HEALTHY, "fgre", null,"fgsf", "", 3);
 		//add 2 birds
-		obj.addPatient("Charlie", "4829458", "canario", 2, "cccc", Animal.HEALTHY, "dfgd", null, "", 2);
-		obj.addPatient("Kiwi", "3820457", "loro", 3, "dddd", Animal.HEALTHY, "rgea", null, "", 2);
+		obj.addPatient("Charlie", "4829458", "canario", 2, "cccc", Animal.HEALTHY, "dfgd", null,"fgsf", "", 2);
+		obj.addPatient("Kiwi", "3820457", "loro", 3, "dddd", Animal.HEALTHY, "rgea", null,"fgsf", "", 2);
 		
 		
 	}
@@ -89,7 +90,7 @@ class VeterinaryTest {
 	}
 	
 	@Test
-	public void deleteProductTest() {
+	public void deleteProductTest() throws ProductNotFoundException {
 		setup1();
 		obj.deleteProduct("0134");
 		assertTrue(obj.getFirstProduct().getRefNum().equalsIgnoreCase("2345"));
@@ -114,7 +115,7 @@ class VeterinaryTest {
 	}
 	
 	@Test
-	public void lookForProductTest() {
+	public void lookForProductTest() throws ProductNotFoundException {
 		setup1();
 		Product p = null;
 		//buscar el primero
@@ -136,7 +137,7 @@ class VeterinaryTest {
 	}
 	
 	@Test
-	public void increaseStockTest() {
+	public void increaseStockTest() throws ProductNotFoundException {
 		setup1();
 		obj.increaseStock("0134", 5);
 		assertTrue(obj.getFirstProduct().getStockUnits().equalsIgnoreCase("35"));
@@ -236,7 +237,7 @@ class VeterinaryTest {
 	}
 	
 	@Test
-	public void lookForPatientTest() {
+	public void lookForPatientTest() throws PatientNotFoundException {
 		setup2();
 		Animal look = obj.lookForPatient("1234567");
 		assertTrue(look.getName().equalsIgnoreCase("lucas"));////////
@@ -263,7 +264,7 @@ class VeterinaryTest {
 	}
 	
 	@Test
-	public void deletePatientTest() {
+	public void deletePatientTest() throws PatientNotFoundException {
 		setup2();
 		//delete the first animal
 		obj.deletePatient("1234567");
@@ -295,7 +296,7 @@ class VeterinaryTest {
 	}
 	
 	@Test 
-	public void createMedicalRecordTest() {
+	public void createMedicalRecordTest() throws MedicalRecordDontExistYet {
 		setup2();
 		try {
 			obj.createMedicalRecord("1234567", "general info", "detallada info");
@@ -409,9 +410,6 @@ class VeterinaryTest {
 		}
 		List<Product> products = obj.showProductsByProfits();
 		
-		for(int i=0;i<products.size();i++) {
-			System.out.println(products.get(i).getProfits());
-		}
 		assertTrue(products.get(0).getProfits().equalsIgnoreCase("4000"));//////////
 		assertTrue(products.get(1).getProfits().equalsIgnoreCase("4000"));
 		assertTrue(products.get(2).getProfits().equalsIgnoreCase("5000"));
@@ -427,12 +425,41 @@ class VeterinaryTest {
 		
 		List<Product> products = obj.showCertainTypeOfProduct("Accesory");
 		
-		for(int i=0;i<products.size();i++) {
-			System.out.println(products.get(i).getName());
-		}
 		assertTrue(products.get(0).getName().equalsIgnoreCase("collar"));
 		assertTrue(products.get(1).getName().equalsIgnoreCase("correa"));
 		
 	
 	}
+	@Test
+	public void showAllPatientsByRaceTest() {
+		setup2();
+		
+		List<Animal> animals = obj.showAllPatientByRace();
+		
+		assertTrue(animals.get(0).getRace().equalsIgnoreCase("AKITA INU"));
+		assertTrue(animals.get(1).getRace().equalsIgnoreCase("bobtail"));
+		assertTrue(animals.get(2).getRace().equalsIgnoreCase("canario"));
+		assertTrue(animals.get(3).getRace().equalsIgnoreCase("gato birmano"));
+		assertTrue(animals.get(4).getRace().equalsIgnoreCase("Hamster Campbell"));
+		assertTrue(animals.get(5).getRace().equalsIgnoreCase("Hamster Roborovski"));
+		assertTrue(animals.get(6).getRace().equalsIgnoreCase("loro"));
+		assertTrue(animals.get(7).getRace().equalsIgnoreCase("Savannah"));
+		
+	}
+	
+	@Test
+	public void showAllPatientByID() {
+		setup2();
+		List<Animal> animals = obj.showAllPatientByID();
+
+		assertTrue(animals.get(0).getId().equalsIgnoreCase("0000134"));
+		assertTrue(animals.get(1).getId().equalsIgnoreCase("1234567"));
+		assertTrue(animals.get(2).getId().equalsIgnoreCase("2683563"));
+		assertTrue(animals.get(3).getId().equalsIgnoreCase("3820457"));
+		assertTrue(animals.get(4).getId().equalsIgnoreCase("3850275"));
+		assertTrue(animals.get(5).getId().equalsIgnoreCase("3920582"));
+		assertTrue(animals.get(6).getId().equalsIgnoreCase("4829458"));
+		assertTrue(animals.get(7).getId().equalsIgnoreCase("9999999"));
+	}
+	
 }

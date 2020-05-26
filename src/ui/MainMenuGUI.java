@@ -6,11 +6,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import model.Veterinary;
+import threads.ClockThread;
 
 public class MainMenuGUI {
 
+    @FXML
+    private Label clock;
+	
 	@FXML
 	private BorderPane mainPane;
 	private Veterinary veterinary;
@@ -50,9 +55,18 @@ public class MainMenuGUI {
     	mainPane.setCenter(storeMenuPane);
     	storeMenu.initializeComboBox();
     } 
+    
+    public void initialize() {
+    	ClockThread clock = new ClockThread(this,veterinary);
+    	clock.start();
+    }
 	
     public BorderPane getMainPane() {
     	return mainPane;
+    }
+    
+    public void setChronometer(String time) {
+    	clock.setText(time); 
     }
     
 }

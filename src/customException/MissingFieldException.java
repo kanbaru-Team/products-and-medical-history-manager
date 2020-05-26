@@ -4,7 +4,7 @@ package customException;
 public class MissingFieldException extends Exception{
 
 	public MissingFieldException() {
-		super("algunos campos estan vacios");
+		super("Algunos campos estan vacios. Por favor diligencie todos los campos");
 	}
 	
 	@Override

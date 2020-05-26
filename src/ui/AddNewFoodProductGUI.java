@@ -56,7 +56,7 @@ public class AddNewFoodProductGUI {
 	        	int price = Integer.parseInt(newProductPrice.getText());
 	        	int cost = Integer.parseInt(newProductCost.getText());
 	    		
-	        	vet.addProduct(name, price, refNumber,  0, cost, stockUnits,"Food", specie, weight);
+	        	vet.addProduct(name, price, refNumber,  stockUnits, 0, cost,"Food", specie, weight);
 	        	
         	    Alert alert = new Alert(Alert.AlertType.INFORMATION);
         	    alert.setHeaderText(null);
