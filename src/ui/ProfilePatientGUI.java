@@ -2,10 +2,13 @@ package ui;
 
 import java.io.IOException;
 
+import customException.MedicalRecordDontExistYet;
+import customException.PatientNotFoundException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import model.Animal;
@@ -60,13 +63,57 @@ public class ProfilePatientGUI {
     	patientDescription.setText(patient.getDescription());
     }
     @FXML
-    public void changeStatus(ActionEvent event) {
-    	//hacer metthod
+    public void changeStatus(ActionEvent event) throws IOException, PatientNotFoundException, MedicalRecordDontExistYet {
+    	if(newStatus.getValue().equalsIgnoreCase(Animal.HOSPITALIZED) || newStatus.getValue().equalsIgnoreCase(Animal.TREATMENT) ) {
+    		if(patient.getMedicalRecord()!=null) {
+    			veterinary.clearMedicalRecord(patient.getId());
+    		}
+    		patientStatus.setText(newStatus.getValue());
+    		if(newStatus.getValue().equalsIgnoreCase(Animal.HOSPITALIZED)) {
+    			veterinary.ChangePatientStatus(patient.getId(), Animal.HOSPITALIZED);
+    		}else if(newStatus.getValue().equalsIgnoreCase(Animal.TREATMENT)) {
+    			veterinary.ChangePatientStatus(patient.getId(), Animal.TREATMENT);
+    		}  		
+    		veterinary.createMedicalRecord(patient.getId(), " ", " ");
+    		medRecord = new CreateMedicalRecordGUI(veterinary, this, mainMenu, patient.getId());
+        	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxmlFiles/CreateMedicalRecord.fxml"));
+        	fxmlLoader.setController(medRecord);
+        	
+        	Parent MedicalRecord = fxmlLoader.load();
+        	mainMenu.getMainPane().getChildren().clear();
+        	mainMenu.getMainPane().setCenter(MedicalRecord);
+    	}else if(newStatus.getValue().equalsIgnoreCase(Animal.HEALTHY)) {
+    		veterinary.clearMedicalRecord(patient.getId());
+    		veterinary.ChangePatientStatus(patient.getId(), Animal.HEALTHY);
+    		patientStatus.setText(Animal.HEALTHY);
+    		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.setHeaderText("Exito");
+			alert.setTitle("Alert");
+			alert.setContentText("El estado del paciente ha sido actualizado");
+			alert.showAndWait();
+    	}
     }
 
     @FXML
     public void generateReport(ActionEvent event) {
     	
+			try {
+				veterinary.printMedicalHistory(patient.getId());
+				Alert alert = new Alert(Alert.AlertType.INFORMATION);
+				alert.setHeaderText("Exito");
+				alert.setTitle("Alert");
+				alert.setContentText("El reporte ha sido generado");
+				alert.showAndWait();
+			} catch (IOException e) {
+				System.out.println("entra a IOException");
+			} catch (PatientNotFoundException e) {
+				Alert alert = new Alert(Alert.AlertType.INFORMATION);
+				alert.setHeaderText("Error");
+				alert.setTitle("Alert");
+				alert.setContentText("El reporte no ha podido ser generado.");
+				alert.showAndWait();
+			}
+		
     }
 
     @FXML
@@ -89,8 +136,9 @@ public class ProfilePatientGUI {
     	mainMenu.getMainPane().getChildren().clear();
     	mainMenu.getMainPane().setCenter(MedicalRecord);
     }
+    
     @FXML
-    public void initializeComboBox(ActionEvent event)  {
+    public void initializeComboBox()  {
     	newStatus.getItems().addAll(Animal.HOSPITALIZED,Animal.HEALTHY,Animal.TREATMENT);
     }
     

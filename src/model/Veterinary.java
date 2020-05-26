@@ -1,8 +1,11 @@
 package model;
 
 import java.io.BufferedWriter;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -15,7 +18,9 @@ import customException.NoItemsInStockException;
 import customException.PatientNotFoundException;
 import customException.ProductNotFoundException;
 
-public class Veterinary {
+@SuppressWarnings("serial")
+public class Veterinary implements Serializable{
+	
 	private Product firstProd;
 	private Product lastProd;
 	private Animal firstAnimal;
@@ -132,7 +137,7 @@ public class Veterinary {
 
 	}
 
-	public void addPatient(String n, String i, String r, int a, String d, String s, String mh, Owner o,String specie, String other, int patientType) {
+	public void addPatient(String n, String i, String r, int a, String d, String s, String mh, Owner o, String other, int patientType) {
 		Animal toAdd = null;
 		
 		switch(patientType) {
@@ -216,7 +221,7 @@ public class Veterinary {
 			owners.addAll(showAllOwner(current.getRight()));
 		}
 		
-		owners.add(current.getName());
+		owners.add(String.valueOf(current.getId()));
 		
 		if(current.getLeft()!=null) {
 			owners.addAll(showAllOwner(current.getLeft()));
@@ -259,6 +264,7 @@ public class Veterinary {
 	public void updateMedicalRecord(String id,String generalInf, String detailedInf) throws MedicalRecordDontExistYet, PatientNotFoundException {
 		Animal ani = lookForPatient(id);
 		if(ani!=null) {
+			addGeneralInfo(id);
 			ani.updateMedicalRecord(generalInf, detailedInf);
 		}else {
 			throw new PatientNotFoundException(id);
@@ -395,13 +401,13 @@ public class Veterinary {
 		
 	}
 
-	public List<Animal> showAllPatientByRace(){
+	public List<Animal> showAllPatientBySpecie(){
 		ArrayList<Animal> patients = new ArrayList<Animal>();
 		patients = turnPatientsIntoArrayList();
 		for(int i=0;i<patients.size();i++) {
 			Animal aux = patients.get(i);
 			int j=i-1;
-			while(j>=0 && patients.get(j).getRace().compareToIgnoreCase(aux.getRace())>0) {
+			while(j>=0 && patients.get(j).getSpecie().compareToIgnoreCase(aux.getSpecie())>0) {
 				patients.set(j+1, patients.get(j));
 				j--;
 			}
@@ -621,7 +627,7 @@ public class Veterinary {
 		Animal a = lookForPatient(id);
 		if(a!=null) {
 			String name = a.getName()+"_"+a.getId();
-			BufferedWriter bw = new BufferedWriter(new FileWriter("medicalHistorires/"+name));
+			BufferedWriter bw = new BufferedWriter(new FileWriter("medicalHistories/"+name));
 			bw.write(a.getMedicalHistory());
 			bw.close();
 		}else {
@@ -702,13 +708,23 @@ public class Veterinary {
 		return clock.toString();
 	}
 	
-	public void addGeneralInfo(String id) throws PatientNotFoundException, MedicalRecordDontExistYet {
+	public void addGeneralInfo(String id) throws PatientNotFoundException {
 		Animal a = lookForPatient(id);
 		if(a!=null && a.getMedicalRecord()!=null) {
 			a.setMedicalHistory("\n"+a.getMedicalRecord().getGeneralInfo());
 		}else {
-			throw new MedicalRecordDontExistYet(id);
+			
 		}
 			
 	}
+	
+	public void clearMedicalRecord(String id) throws PatientNotFoundException {
+		Animal a = lookForPatient(id);
+		if(a!=null) {
+			addGeneralInfo(id);
+			a.clearMedicalRecord();
+		}
+	}
+	
+	
 }

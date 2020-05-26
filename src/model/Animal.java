@@ -1,8 +1,11 @@
 package model;
 
+import java.io.Serializable;
+
 import customException.MedicalRecordDontExistYet;
 
-public abstract class Animal {
+@SuppressWarnings("serial")
+public abstract class Animal implements Serializable{
 	
 	public final static String HEALTHY = "Saludable";
 	public final static String HOSPITALIZED = "Hospitalizado";
@@ -108,8 +111,13 @@ public abstract class Animal {
 		this.owner = owner;
 	}
 	
-	public void createMedicalRecord(String genInf,String detInf)  {
-		medicalRecord= new MedicalRecord(genInf,detInf);	
+	public void createMedicalRecord(String genInf,String detInf) throws MedicalRecordDontExistYet  {
+		if(medicalRecord==null) {
+			medicalRecord= new MedicalRecord(genInf,detInf);
+		}else {
+			throw new MedicalRecordDontExistYet(id);
+		}
+			
 	}
 	public void updateMedicalRecord(String genInf,String detInf) throws MedicalRecordDontExistYet {
 		if(medicalRecord!=null) {
@@ -118,6 +126,10 @@ public abstract class Animal {
 		}else {
 			throw new MedicalRecordDontExistYet(id);
 		}
+	}
+	
+	public void clearMedicalRecord() {
+		medicalRecord=null;
 	}
 
 	public String getName() {

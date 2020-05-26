@@ -58,7 +58,6 @@ public class VeterinaryMenuGUI {
     	Parent registeredPatientsPane = fxmlLoader.load();
     	mainMenu.getMainPane().getChildren().clear();
     	mainMenu.getMainPane().setCenter(registeredPatientsPane);
-    	registeredPatient.initializeTableView();
     	registeredPatient.showAllOptions(false);
     	
     }
@@ -72,8 +71,8 @@ public class VeterinaryMenuGUI {
     	Parent registeredPatientsPane = fxmlLoader.load();
     	mainMenu.getMainPane().getChildren().clear();
     	mainMenu.getMainPane().setCenter(registeredPatientsPane);
-    	registeredPatient.initializeTableView();
     	registeredPatient.showAllOptions(true);
+    	registeredPatient.initializeComboBox();
     	
     }
 
@@ -86,7 +85,6 @@ public class VeterinaryMenuGUI {
     	Parent searchPatientsPane = fxmlLoader.load();
     	mainMenu.getMainPane().getChildren().clear();
     	mainMenu.getMainPane().setCenter(searchPatientsPane);
-    	registeredPatient.initializeTableView();
     	
     }
 

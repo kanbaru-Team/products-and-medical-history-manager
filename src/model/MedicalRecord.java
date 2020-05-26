@@ -1,8 +1,13 @@
 package model;
 
-public class MedicalRecord {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class MedicalRecord implements Serializable{
+	
 	private String generalInfo;
 	private String detailInfo;
+	
 	public MedicalRecord(String generalInfo, String detailInfo) {
 		this.generalInfo = generalInfo;
 		this.detailInfo = detailInfo;

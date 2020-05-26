@@ -76,6 +76,58 @@ public class AddOwnerAndPatientGUI {
     
     @FXML
     public void addPatient(ActionEvent event) {
+    	
+    	if(!patientName.getText().isEmpty() && !patientID.getText().isEmpty() && !patientRace.getText().isEmpty() && !patientAge.getText().isEmpty() && !PatientDescription.getText().isEmpty() && !patientOwner.getValue().equalsIgnoreCase("none") && !PatientStatus.getValue().equalsIgnoreCase("none") && !patientSpecie.getValue().equalsIgnoreCase("none") && !otherField.getValue().equalsIgnoreCase("none")) {
+
+    		try{
+
+    			String name = patientName.getText();
+    			Long.parseLong(patientID.getText());
+    			String id = patientID.getText();
+    			String race = patientRace.getText();
+    			int age = Integer.parseInt(patientAge.getText());
+    			String description = PatientDescription.getText();
+    			String state = PatientStatus.getValue();
+    			String medicalHistory = "medical history: ";
+    			Owner owner= veterinary.lookForOwner(Long.parseLong(patientOwner.getValue()));
+    			String other = otherField.getValue();
+    			String specie = patientSpecie.getValue();
+    			int specieNum = -1;
+
+    			if(specie.equalsIgnoreCase("Canino")) {
+    				specieNum = 0;
+    			}else if(specie.equalsIgnoreCase("Felino")) {
+    				specieNum = 1;
+    			}else if(specie.equalsIgnoreCase("Ave")) {
+    				specieNum = 2;
+    			}else if(specie.equalsIgnoreCase("Roedor")) {
+    				specieNum = 3;
+    			}
+    			
+    			veterinary.addPatient(name, id, race, age, description, state, medicalHistory, owner, other, specieNum);
+    			
+        	    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        	    alert.setHeaderText(null);
+        	    alert.setTitle("Alert");
+        	    alert.setContentText("patiente added successfully");
+        	    alert.showAndWait();
+
+    		}catch(NumberFormatException e) {
+        	    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        	    alert.setHeaderText(null);
+        	    alert.setTitle("Alert");
+        	    alert.setContentText("age and id must be numeric");
+        	    alert.showAndWait();
+    		}
+    			
+    	}else {
+    	    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    	    alert.setHeaderText(null);
+    	    alert.setTitle("Alert");
+    	    alert.setContentText("some fiels are empty");
+    	    alert.showAndWait();
+    	}
+    	
     	try {
 			returnToPrevScreen();
 		} catch (IOException e) {
@@ -136,15 +188,19 @@ public class AddOwnerAndPatientGUI {
     }
     
     public void initializateStatus() {
+    	PatientStatus.setValue("none");
     	PatientStatus.getItems().addAll( Animal.HEALTHY,Animal.HOSPITALIZED,Animal.TREATMENT );
     }
 	
     public void initializeSpecie() {
+    	patientSpecie.setValue("none");
     	patientSpecie.getItems().addAll("Canino","Felino","Ave","Roedor");
     }
     
     public void initializeOwner() {
+    	patientOwner.setValue("none");
     	patientOwner.getItems().addAll(veterinary.showAllOwner());
+    	patientOwner.setVisibleRowCount(8);
     }
     
     public void initiaLizeOther() {
@@ -160,7 +216,9 @@ public class AddOwnerAndPatientGUI {
     
     public void showOther() {
     	putVisibleOther();
+    	
    		otherField.getItems().clear();
+   		otherField.setValue("none");
     	if(patientSpecie.getValue().equalsIgnoreCase("Canino")) {
     		other.setText("talla: ");
     		otherField.getItems().addAll(Dog.PUPPY,Dog.ADULT_LITTLE_RACE,Dog.ADULT_BIG_RACE);

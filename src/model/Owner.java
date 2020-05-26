@@ -1,6 +1,9 @@
 package model;
 
-public class Owner{
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Owner implements Serializable{
 
 	private long id;
 	private String name;

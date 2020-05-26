@@ -53,9 +53,12 @@ public class RegisteredProductsGUI	{
     
     @FXML
     private ComboBox<String> comboSortBy;
+    
+    private RegisteredProductsThread rpt;
 
     @FXML
     public void goBack(ActionEvent event) throws IOException {
+    	rpt.setFlag(false);
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxmlFiles/StoreMenu.fxml"));
     	fxmlLoader.setController(storeMenu);
     	
@@ -66,7 +69,7 @@ public class RegisteredProductsGUI	{
     }
     
     public void initialize() {
-    	RegisteredProductsThread rpt = new RegisteredProductsThread(this, vet);
+    	rpt = new RegisteredProductsThread(this, vet);
     	rpt.start();
     }
     

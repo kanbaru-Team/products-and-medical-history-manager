@@ -43,7 +43,6 @@ public class RegisteredProductsThread extends Thread{
 			}else if(operation.equalsIgnoreCase("Mostrar Juguetes")) {
 				products = veterinary.showCertainTypeOfProduct("Toy");
 			}
-			
 			Platform.runLater(new Thread() {
 				@Override
 				public void run() {

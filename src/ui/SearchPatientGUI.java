@@ -80,6 +80,7 @@ public class SearchPatientGUI {
     	Parent ProfilePatient = fxmlLoader.load();
     	mainMenu.getMainPane().getChildren().clear();
     	mainMenu.getMainPane().setCenter(ProfilePatient);
+    	profile.initializeComboBox();
     }
 	
 }

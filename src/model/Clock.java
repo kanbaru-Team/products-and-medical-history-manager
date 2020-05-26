@@ -1,9 +1,11 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class Clock {
+@SuppressWarnings("serial")
+public class Clock implements Serializable{
 
 	private long hour;
 	private long seconds;

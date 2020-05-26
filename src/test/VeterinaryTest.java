@@ -38,17 +38,17 @@ class VeterinaryTest {
 	public void setup2() {
 		
 		//add 2 dogs
-		obj.addPatient("lucas", "1234567", "Akita Inu", 5, "huele a limon :v", Animal.HEALTHY, "dfdas", null,"dfsdf", "", 0);
-		obj.addPatient("roberto", "9999999", "Bobtail", 10, "le gusta morder zapatos", Animal.HEALTHY, "dsfa", null,"fgsf", "", 0);
+		obj.addPatient("lucas", "1234567", "Akita Inu", 5, "huele a limon :v", Animal.HEALTHY, "dfdas", null, "Dog", 0);
+		obj.addPatient("roberto", "9999999", "Bobtail", 10, "le gusta morder zapatos", Animal.HEALTHY, "dsfa", null, "Dog", 0);
 		//add 2 cats
-		obj.addPatient("pelusa", "0000134", "Savannah", 4, "anda enojado a cada rato", Animal.HEALTHY, "dfg", null,"fgsf", "", 1);
-		obj.addPatient("kuro", "2683563", "Gato birmano", 2, "ya no se que inventarme", Animal.HEALTHY, "efs", null,"fgsf", "", 1);
+		obj.addPatient("pelusa", "0000134", "Savannah", 4, "anda enojado a cada rato", Animal.HEALTHY, "dfg", null, "Cat", 1);
+		obj.addPatient("kuro", "2683563", "Gato birmano", 2, "ya no se que inventarme", Animal.HEALTHY, "efs", null, "Cat", 1);
 		//add 2 rodents
-		obj.addPatient("roberto", "3850275", "Hamster Campbell", 1, "aaaa", Animal.HEALTHY, "gfd", null,"fgsf", "", 3);
-		obj.addPatient("nose", "3920582", "Hamster Roborovski", 2, "bbbb", Animal.HEALTHY, "fgre", null,"fgsf", "", 3);
+		obj.addPatient("roberto", "3850275", "Hamster Campbell", 1, "aaaa", Animal.HEALTHY, "gfd", null, "Rodent", 3);
+		obj.addPatient("nose", "3920582", "Hamster Roborovski", 2, "bbbb", Animal.HEALTHY, "fgre", null, "Rodent", 3);
 		//add 2 birds
-		obj.addPatient("Charlie", "4829458", "canario", 2, "cccc", Animal.HEALTHY, "dfgd", null,"fgsf", "", 2);
-		obj.addPatient("Kiwi", "3820457", "loro", 3, "dddd", Animal.HEALTHY, "rgea", null,"fgsf", "", 2);
+		obj.addPatient("Charlie", "4829458", "canario", 2, "cccc", Animal.HEALTHY, "dfgd", null, "Bird", 2);
+		obj.addPatient("Kiwi", "3820457", "loro", 3, "dddd", Animal.HEALTHY, "rgea", null, "Bird", 2);
 		
 		
 	}
@@ -431,10 +431,10 @@ class VeterinaryTest {
 	
 	}
 	@Test
-	public void showAllPatientsByRaceTest() {
+	public void showAllPatientsBySpecieTest() {
 		setup2();
 		
-		List<Animal> animals = obj.showAllPatientByRace();
+		List<Animal> animals = obj.showAllPatientBySpecie();
 		
 		assertTrue(animals.get(0).getRace().equalsIgnoreCase("AKITA INU"));
 		assertTrue(animals.get(1).getRace().equalsIgnoreCase("bobtail"));

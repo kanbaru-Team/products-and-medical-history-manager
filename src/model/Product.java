@@ -1,6 +1,9 @@
 package model;
 
-public abstract class Product implements CalculateProfit, SellProduct, CalculateEarnings{
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public abstract class Product implements CalculateProfit, SellProduct, CalculateEarnings,Serializable{
 	private String name;
 	private int price;
 	private String refNum;

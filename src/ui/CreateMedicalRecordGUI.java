@@ -44,7 +44,8 @@ public class CreateMedicalRecordGUI{
 			String genInfo = generalInformation.getText();
 			String detInfo = detailedInformation.getText();
 			try {
-				veterinary.createMedicalRecord(id, genInfo, detInfo);
+				veterinary.addGeneralInfo(id);
+				veterinary.updateMedicalRecord(id, genInfo, detInfo);
 				Alert alert = new Alert(Alert.AlertType.INFORMATION);
 				alert.setHeaderText("Exito");
 				alert.setTitle("Enhorabuena");
@@ -77,6 +78,7 @@ public class CreateMedicalRecordGUI{
     	Parent StoreMenuPane = fxmlLoader.load();
     	mainMenu.getMainPane().getChildren().clear();
     	mainMenu.getMainPane().setCenter(StoreMenuPane);
+    	profilePatient.initializeComboBox();
     }
 
 }
