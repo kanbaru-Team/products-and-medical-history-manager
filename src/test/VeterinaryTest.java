@@ -90,7 +90,7 @@ class VeterinaryTest {
 	}
 	
 	@Test
-	public void deleteProductTest() throws ProductNotFoundException {
+	public void deleteProductTest() throws ProductNotFoundException{
 		setup1();
 		obj.deleteProduct("0134");
 		assertTrue(obj.getFirstProduct().getRefNum().equalsIgnoreCase("2345"));
@@ -110,7 +110,13 @@ class VeterinaryTest {
 		obj.deleteProduct("3456");
 		assertTrue(obj.getFirstProduct()==null);
 		//borrar uno inexistente
-		obj.deleteProduct("241223");
+		try {
+			obj.deleteProduct("241223"); ///////////////
+			fail();
+		}catch(ProductNotFoundException e) {
+			
+		}
+
 	
 	}
 	
@@ -131,8 +137,12 @@ class VeterinaryTest {
 		assertTrue(p.getName().equalsIgnoreCase("muneco"));
 		assertTrue(p.getRefNum().equalsIgnoreCase("4356"));
 		//buscar uno inexistente
-		p = obj.lookForProduct("0000");
-		assertTrue(p==null);
+		try {
+			p = obj.lookForProduct("0000"); ////////////////////
+			fail();
+		}catch(ProductNotFoundException e) {
+			
+		}
 			
 	}
 	
@@ -241,8 +251,13 @@ class VeterinaryTest {
 		setup2();
 		Animal look = obj.lookForPatient("1234567");
 		assertTrue(look.getName().equalsIgnoreCase("lucas"));////////
-		look = obj.lookForPatient("2343333");
-		assertTrue(look==null);
+		try {
+			look = obj.lookForPatient("2343333"); ///////////////
+			fail();
+		}catch(PatientNotFoundException e) {
+			
+		}
+
 		look=obj.lookForPatient("3850275");
 		assertTrue(look.getName().equalsIgnoreCase("roberto"));
 	}
@@ -268,30 +283,76 @@ class VeterinaryTest {
 		setup2();
 		//delete the first animal
 		obj.deletePatient("1234567");
-		assertTrue(obj.lookForPatient("1234567")==null);
+		try {
+			obj.lookForPatient("1234567");
+			fail();
+		}catch(PatientNotFoundException e) {
+			
+		}
 		//delete the last animal
 		obj.deletePatient("3820457");
-		assertTrue(obj.lookForPatient("3820457")==null);
+		try {
+			obj.lookForPatient("3820457");
+			fail();
+		}catch(PatientNotFoundException e) {
+			
+		}
 		//delete an animal from the middle
 		obj.deletePatient("3850275");
-		assertTrue(obj.lookForPatient("3850275")==null);
+		try {
+			obj.lookForPatient("3850275");
+			fail();
+		}catch(PatientNotFoundException e) {
+			
+		}
 		//delete the first animal
 		obj.deletePatient("9999999");
-		assertTrue(obj.lookForPatient("9999999")==null);
+		try {
+			obj.lookForPatient("9999999");
+			fail();
+		}catch(PatientNotFoundException e) {
+			
+		}
 		//delete the last animal
 		obj.deletePatient("4829458");
-		assertTrue(obj.lookForPatient("4829458")==null);
+		try {
+			obj.lookForPatient("4829458");
+			fail();
+		}catch(PatientNotFoundException e) {
+			
+		}
 		//delete an animal from the middle
 		obj.deletePatient("2683563");
-		assertTrue(obj.lookForPatient("2683563")==null);
+		try {
+			obj.lookForPatient("2683563");
+			fail();
+		}catch(PatientNotFoundException e) {
+			
+		}
 		//delete the last animal
 		obj.deletePatient("3920582");
-		assertTrue(obj.lookForPatient("3920582")==null);
+		try {
+			obj.lookForPatient("3920582");
+			fail();
+		}catch(PatientNotFoundException e) {
+			
+		}
 		//delete the first and unique animal
 		obj.deletePatient("0000134");
-		assertTrue(obj.lookForPatient("0000134")==null);
+		try {
+			obj.lookForPatient("0000134");
+			fail();
+		}catch(PatientNotFoundException e) {
+			
+		}
 		//do not delete anything because there are not animals
-		obj.deletePatient("1234567");
+		
+		try {
+			obj.lookForPatient("1234567");
+			fail();
+		}catch(PatientNotFoundException e) {
+			
+		}
 		
 	}
 	
@@ -436,14 +497,15 @@ class VeterinaryTest {
 		
 		List<Animal> animals = obj.showAllPatientBySpecie();
 		
-		assertTrue(animals.get(0).getRace().equalsIgnoreCase("AKITA INU"));
-		assertTrue(animals.get(1).getRace().equalsIgnoreCase("bobtail"));
-		assertTrue(animals.get(2).getRace().equalsIgnoreCase("canario"));
-		assertTrue(animals.get(3).getRace().equalsIgnoreCase("gato birmano"));
-		assertTrue(animals.get(4).getRace().equalsIgnoreCase("Hamster Campbell"));
-		assertTrue(animals.get(5).getRace().equalsIgnoreCase("Hamster Roborovski"));
-		assertTrue(animals.get(6).getRace().equalsIgnoreCase("loro"));
-		assertTrue(animals.get(7).getRace().equalsIgnoreCase("Savannah"));
+		
+		assertTrue(animals.get(0).getSpecie().equalsIgnoreCase("Bird")); ///////////////
+		assertTrue(animals.get(1).getSpecie().equalsIgnoreCase("Bird"));
+		assertTrue(animals.get(2).getSpecie().equalsIgnoreCase("Cat"));
+		assertTrue(animals.get(3).getSpecie().equalsIgnoreCase("Cat"));
+		assertTrue(animals.get(4).getSpecie().equalsIgnoreCase("Dog"));
+		assertTrue(animals.get(5).getSpecie().equalsIgnoreCase("Dog"));
+		assertTrue(animals.get(6).getSpecie().equalsIgnoreCase("Rodent"));
+		assertTrue(animals.get(7).getSpecie().equalsIgnoreCase("Rodent"));
 		
 	}
 	
